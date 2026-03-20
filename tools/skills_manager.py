@@ -9,7 +9,6 @@ requirements:
 description: Standalone OpenWebUI tool for managing native Workspace Skills (list/show/create/update/delete) for any model.
 """
 
-import asyncio
 import logging
 import uuid
 from typing import Optional, Dict, Any, List
@@ -47,6 +46,7 @@ BASE_TRANSLATIONS = {
     "msg_created": "Skill created successfully.",
     "msg_updated": "Skill updated successfully.",
     "msg_deleted": "Skill deleted successfully.",
+    "msg_manual_enable_required": "The skill was saved as inactive. Review it and enable it manually if it is safe.",
 }
 
 TRANSLATIONS = {
@@ -356,7 +356,7 @@ async def _get_user_context(
     __event_call__: Optional[Any] = None,
     __request__: Optional[Any] = None,
 ) -> Dict[str, str]:
-    """Extract robust user context with frontend language fallback."""
+    """Extract user context from trusted server-side inputs only."""
     if isinstance(__user__, (list, tuple)):
         user_data = __user__[0] if __user__ else {}
     elif isinstance(__user__, dict):
@@ -370,30 +370,6 @@ async def _get_user_context(
         accept_lang = __request__.headers.get("accept-language", "")
         if accept_lang:
             user_language = accept_lang.split(",")[0].split(";")[0]
-
-    if __event_call__:
-        try:
-            js_code = """
-                try {
-                    return (
-                        document.documentElement.lang ||
-                        localStorage.getItem('locale') ||
-                        localStorage.getItem('language') ||
-                        navigator.language ||
-                        'en-US'
-                    );
-                } catch (e) {
-                    return 'en-US';
-                }
-            """
-            frontend_lang = await asyncio.wait_for(
-                __event_call__({"type": "execute", "data": {"code": js_code}}),
-                timeout=2.0,
-            )
-            if frontend_lang and isinstance(frontend_lang, str):
-                user_language = frontend_lang
-        except Exception as e:
-            logger.warning(f"Failed to retrieve frontend language: {e}")
 
     return {
         "user_id": str(user_data.get("id", "")).strip(),
@@ -621,7 +597,7 @@ class Tools:
                         "name": skill_name,
                         "description": final_description,
                         "content": final_content,
-                        "is_active": True,
+                        "is_active": False,
                     },
                 )
                 await _emit_status(self.valves, __event_emitter__, _t(lang, "status_create_overwrite_done", name=skill_name),
@@ -632,6 +608,8 @@ class Tools:
                     "action": "updated",
                     "id": str(getattr(updated, "id", "") or sid),
                     "name": skill_name,
+                    "is_active": False,
+                    "message": _t(lang, "msg_manual_enable_required"),
                 }
 
             new_skill = Skills.insert_new_skill(
@@ -642,7 +620,7 @@ class Tools:
                     description=final_description,
                     content=final_content,
                     meta=SkillMeta(),
-                    is_active=True,
+                    is_active=False,
                 ),
             )
 
@@ -654,6 +632,8 @@ class Tools:
                 "action": "created",
                 "id": str(getattr(new_skill, "id", "") or ""),
                 "name": skill_name,
+                "is_active": False,
+                "message": _t(lang, "msg_manual_enable_required"),
             }
         except Exception as e:
             msg = (

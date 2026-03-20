@@ -15,6 +15,18 @@ from pydantic import BaseModel, Field
 file_handler = True
 
 
+def _sanitize_upload_name(name: str) -> str:
+    """Reduce a provided filename to a safe display and path segment."""
+    normalized = str(name or "").replace("\\", "/").split("/")[-1].strip()
+    normalized = normalized.replace("\x00", "")
+    return normalized or "unknown"
+
+
+def _escape_table_cell(value: str) -> str:
+    """Escape Markdown table control characters."""
+    return str(value or "").replace("\\", "\\\\").replace("\n", " ").replace("|", "\\|")
+
+
 class Tools:
     def __init__(self):
         """Initialize the Tool."""
@@ -74,7 +86,8 @@ class Tools:
         # Process files
         file_list = []
         for file_info in __files__:
-            name = file_info.get("name", "unknown")
+            original_name = file_info.get("name", "unknown")
+            name = _sanitize_upload_name(original_name)
             file_type = file_info.get("type", "file")
             file_id = file_info.get("id", "")
             path = f"/mnt/uploads/{name}"
@@ -96,7 +109,9 @@ class Tools:
         ]
 
         for f in file_list:
-            result_lines.append(f"| {f['name']} | {f['path']} | {f['type']} |")
+            result_lines.append(
+                f"| {_escape_table_cell(f['name'])} | {_escape_table_cell(f['path'])} | {_escape_table_cell(f['type'])} |"
+            )
 
         result_lines.extend(
             [
