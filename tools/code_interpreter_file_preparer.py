@@ -4,7 +4,7 @@ author: ten
 author_url: https://github.com/Meteoreight
 git_url: https://github.com/Meteoreight/open-webui-extensions
 description: Prepare uploaded files for Code Interpreter by ensuring they are accessible in /mnt/uploads/
-required_open_webui_version: 0.4.0
+required_open_webui_version: 0.8.9
 version: 0.1.0
 licence: MIT
 """
