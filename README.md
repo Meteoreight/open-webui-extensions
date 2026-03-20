@@ -1,6 +1,6 @@
 # Open WebUI Extensions
 
-Collection of tools and functions for [Open WebUI](https://openwebui.com/).
+Collection of tools, functions, and skills for [Open WebUI](https://openwebui.com/).
 
 ## Overview
 
@@ -11,6 +11,7 @@ This repository contains custom extensions to enhance Open WebUI functionality:
   - **Pipe**: Custom model providers
   - **Filter**: Input/output modifiers
   - **Action**: Chat message buttons
+- **Skills**: Reusable instruction sets (Markdown) for guiding AI behavior
 
 ## Tools
 
@@ -97,10 +98,33 @@ class Tools:
         pass
 ```
 
+## Skills
+
+Markdown-based instruction sets for guiding AI behavior. Added in Open WebUI v0.8.0.
+
+**Features:**
+- Reusable instructions (e.g., code review guidelines, writing style rules)
+- `$` mention in chat for direct injection
+- Model-attached skills for lazy-loading
+
+**File Format:**
+```markdown
+---
+name: skill-name
+description: Brief description of the skill
+---
+
+# Skill Title
+
+Instructions in Markdown...
+```
+
 ## Directory Structure
 
 ```
 open-webui-extensions/
+├── skills/             # Markdown instruction sets (v0.8.0+)
+│   └── _template.md
 ├── tools/              # LLM-callable tools
 │   ├── _template.py
 │   ├── code_interpreter_file_preparer.py
@@ -115,6 +139,7 @@ open-webui-extensions/
 
 - [Open WebUI Tools Documentation](https://docs.openwebui.com/features/extensibility/plugin/tools/)
 - [Open WebUI Functions Documentation](https://docs.openwebui.com/features/extensibility/plugin/functions/)
+- [Open WebUI Skills Documentation](https://docs.openwebui.com/features/ai-knowledge/skills/) (v0.8.0+)
 - [Open WebUI Community Library](https://openwebui.com/search)
 
 ## License
