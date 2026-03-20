@@ -11,7 +11,6 @@ licence: MIT
 """
 
 from pydantic import BaseModel, Field
-from typing import Optional
 
 
 class Filter:
@@ -38,10 +37,9 @@ class Filter:
         :param __user__: User context
         :return: Modified request body
         """
-        messages = body.get("messages", [])
-
         # Modify messages before sending to model
         # Example: Add system message, filter content, etc.
+        # messages = body.get("messages", [])
 
         return body
 
@@ -57,9 +55,8 @@ class Filter:
         :param __user__: User context
         :return: Modified response body
         """
-        messages = body.get("messages", [])
-
         # Modify messages after receiving from model
         # Example: Format response, add citations, etc.
+        # messages = body.get("messages", [])
 
         return body

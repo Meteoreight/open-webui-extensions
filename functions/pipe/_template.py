@@ -11,7 +11,7 @@ licence: MIT
 """
 
 from pydantic import BaseModel, Field
-from typing import Optional, Generator, AsyncGenerator
+from typing import AsyncGenerator
 
 
 class Pipe:
@@ -57,9 +57,8 @@ class Pipe:
         :param __event_emitter__: Event emitter for streaming
         :yield: Streamed response chunks
         """
-        messages = body.get("messages", [])
-
         # Your processing logic here
+        # messages = body.get("messages", [])
         response = "This is a response from the pipe function."
 
         yield response
