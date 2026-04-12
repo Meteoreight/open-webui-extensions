@@ -1,6 +1,13 @@
 # Claude Code
 .claude/
 
+# Reference repository
+open-webui/
+node_modules/
+playwright-report/
+test-results/
+tests/playwright/.auth/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -141,6 +148,7 @@ celerybeat.pid
 .env
 .envrc
 .venv
+!.env.playwright.example
 env/
 venv/
 ENV/

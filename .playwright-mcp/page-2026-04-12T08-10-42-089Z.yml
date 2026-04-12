@@ -1,0 +1,1512 @@
+- generic [ref=e2]:
+  - region
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fopen-webui%2Fopen-webui
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=open-webui%2Fopen-webui
+            - button "Appearance settings" [disabled] [ref=e58]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "open-webui" [ref=e70] [cursor=pointer]:
+            - /url: /open-webui
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "open-webui" [ref=e73] [cursor=pointer]:
+              - /url: /open-webui/open-webui
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fopen-webui%2Fopen-webui
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 18.6k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fopen-webui%2Fopen-webui
+                - img [ref=e82]
+                - text: Fork
+                - generic "18,642" [ref=e84]: 18.6k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fopen-webui%2Fopen-webui
+                - img [ref=e88]
+                - text: Star
+                - generic "131344 users starred this repository" [ref=e90]: 131k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /open-webui/open-webui
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 193" [ref=e99] [cursor=pointer]:
+              - /url: /open-webui/open-webui/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "193" [ref=e104]
+          - listitem [ref=e105]:
+            - link "Pull requests 138" [ref=e106] [cursor=pointer]:
+              - /url: /open-webui/open-webui/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "138" [ref=e110]
+          - listitem [ref=e111]:
+            - link "Discussions" [ref=e112] [cursor=pointer]:
+              - /url: /open-webui/open-webui/discussions
+              - img [ref=e113]
+              - generic [ref=e115]: Discussions
+          - listitem [ref=e116]:
+            - link "Actions" [ref=e117] [cursor=pointer]:
+              - /url: /open-webui/open-webui/actions
+              - img [ref=e118]
+              - generic [ref=e120]: Actions
+          - listitem [ref=e121]:
+            - link "Security and quality 14" [ref=e122] [cursor=pointer]:
+              - /url: /open-webui/open-webui/security
+              - img [ref=e123]
+              - generic [ref=e125]: Security and quality
+              - generic "14" [ref=e126]
+          - listitem [ref=e127]:
+            - link "Insights" [ref=e128] [cursor=pointer]:
+              - /url: /open-webui/open-webui/pulse
+              - img [ref=e129]
+              - generic [ref=e131]: Insights
+    - generic [ref=e144]:
+      - heading "open-webui/open-webui" [level=1] [ref=e146]
+      - generic [ref=e147]:
+        - generic [ref=e150]:
+          - generic [ref=e151]:
+            - generic [ref=e152]:
+              - button "main branch" [ref=e154] [cursor=pointer]:
+                - generic [ref=e155]:
+                  - generic [ref=e157]:
+                    - img [ref=e159]
+                    - generic [ref=e162]: main
+                  - generic:
+                    - img
+              - generic [ref=e163]:
+                - link "Branches" [ref=e164] [cursor=pointer]:
+                  - /url: /open-webui/open-webui/branches
+                  - generic [ref=e165]:
+                    - generic:
+                      - img
+                    - generic [ref=e166]: Branches
+                - link "Tags" [ref=e167] [cursor=pointer]:
+                  - /url: /open-webui/open-webui/tags
+                  - generic [ref=e168]:
+                    - generic:
+                      - img
+                    - generic [ref=e169]: Tags
+            - generic [ref=e170]:
+              - generic [ref=e174]:
+                - img [ref=e176]
+                - combobox "Go to file" [ref=e178]
+              - button "Code" [ref=e179] [cursor=pointer]:
+                - generic [ref=e180]:
+                  - generic:
+                    - img
+                  - generic [ref=e181]: Code
+                  - generic:
+                    - img
+          - generic [ref=e182]:
+            - generic [ref=e183]:
+              - heading "Folders and files" [level=2] [ref=e184]
+              - table "Folders and files" [ref=e185]:
+                - rowgroup:
+                  - row "Name Last commit message Last commit date":
+                    - columnheader "Name"
+                    - columnheader "Last commit message":
+                      - generic "Last commit message"
+                    - columnheader "Last commit date":
+                      - generic "Last commit date"
+                - rowgroup [ref=e186]:
+                  - row "Latest commit History 16,005 Commits" [ref=e187]:
+                    - cell "Latest commit History 16,005 Commits" [ref=e188]:
+                      - generic [ref=e189]:
+                        - heading "Latest commit" [level=2] [ref=e190]
+                        - generic [ref=e193]:
+                          - heading "History" [level=2] [ref=e194]
+                          - link "16,005 Commits" [ref=e195] [cursor=pointer]:
+                            - /url: /open-webui/open-webui/commits/main/
+                            - generic [ref=e196]:
+                              - generic:
+                                - img
+                              - generic [ref=e197]: 16,005 Commits
+                  - row ".github, (Directory)" [ref=e198]:
+                    - cell ".github, (Directory)" [ref=e199]:
+                      - generic [ref=e200]:
+                        - img [ref=e201]
+                        - link ".github, (Directory)" [ref=e206] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/tree/main/.github
+                          - text: .github
+                    - cell [ref=e207]
+                    - cell [ref=e209]
+                  - row "backend, (Directory)" [ref=e212]:
+                    - cell "backend, (Directory)" [ref=e213]:
+                      - generic [ref=e214]:
+                        - img [ref=e215]
+                        - link "backend, (Directory)" [ref=e220] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/tree/main/backend
+                          - text: backend
+                    - cell [ref=e221]
+                    - cell [ref=e223]
+                  - row "cypress, (Directory)" [ref=e226]:
+                    - cell "cypress, (Directory)" [ref=e227]:
+                      - generic [ref=e228]:
+                        - img [ref=e229]
+                        - link "cypress, (Directory)" [ref=e234] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/tree/main/cypress
+                          - text: cypress
+                    - cell [ref=e235]
+                    - cell [ref=e237]
+                  - row "docs, (Directory)" [ref=e240]:
+                    - cell "docs, (Directory)" [ref=e241]:
+                      - generic [ref=e242]:
+                        - img [ref=e243]
+                        - link "docs, (Directory)" [ref=e248] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/tree/main/docs
+                          - text: docs
+                    - cell [ref=e249]
+                    - cell [ref=e251]
+                  - row "scripts, (Directory)" [ref=e254]:
+                    - cell "scripts, (Directory)" [ref=e255]:
+                      - generic [ref=e256]:
+                        - img [ref=e257]
+                        - link "scripts, (Directory)" [ref=e262] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/tree/main/scripts
+                          - text: scripts
+                    - cell [ref=e263]
+                    - cell [ref=e265]
+                  - row "src, (Directory)" [ref=e268]:
+                    - cell "src, (Directory)" [ref=e269]:
+                      - generic [ref=e270]:
+                        - img [ref=e271]
+                        - link "src, (Directory)" [ref=e276] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/tree/main/src
+                          - text: src
+                    - cell [ref=e277]
+                    - cell [ref=e279]
+                  - row "static, (Directory)" [ref=e282]:
+                    - cell "static, (Directory)" [ref=e283]:
+                      - generic [ref=e284]:
+                        - img [ref=e285]
+                        - link "static, (Directory)" [ref=e290] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/tree/main/static
+                          - text: static
+                    - cell [ref=e291]
+                    - cell [ref=e293]
+                  - row "test/test_files/image_gen, (Directory)" [ref=e296]:
+                    - cell "test/test_files/image_gen, (Directory)" [ref=e297]:
+                      - generic [ref=e298]:
+                        - img [ref=e299]
+                        - link "test/test_files/image_gen, (Directory)" [ref=e304] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/tree/main/test/test_files/image_gen
+                          - text: test/test_files/image_gen
+                    - cell [ref=e305]
+                    - cell [ref=e307]
+                  - row ".dockerignore, (File)" [ref=e310]:
+                    - cell ".dockerignore, (File)" [ref=e311]:
+                      - generic [ref=e312]:
+                        - img [ref=e313]
+                        - link ".dockerignore, (File)" [ref=e318] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/.dockerignore
+                          - text: .dockerignore
+                    - cell [ref=e319]
+                    - cell [ref=e321]
+                  - row ".env.example, (File)" [ref=e324]:
+                    - cell ".env.example, (File)" [ref=e325]:
+                      - generic [ref=e326]:
+                        - img [ref=e327]
+                        - link ".env.example, (File)" [ref=e332] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/.env.example
+                          - text: .env.example
+                    - cell [ref=e333]
+                    - cell [ref=e335]
+                  - row ".eslintignore, (File)" [ref=e338]:
+                    - cell ".eslintignore, (File)" [ref=e339]:
+                      - generic [ref=e340]:
+                        - img [ref=e341]
+                        - link ".eslintignore, (File)" [ref=e346] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/.eslintignore
+                          - text: .eslintignore
+                    - cell [ref=e347]
+                    - cell [ref=e349]
+                  - row ".eslintrc.cjs, (File)" [ref=e352]:
+                    - cell ".eslintrc.cjs, (File)" [ref=e353]:
+                      - generic [ref=e354]:
+                        - img [ref=e355]
+                        - link ".eslintrc.cjs, (File)" [ref=e360] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/.eslintrc.cjs
+                          - text: .eslintrc.cjs
+                    - cell [ref=e361]
+                    - cell [ref=e363]
+                  - row ".gitattributes, (File)" [ref=e366]:
+                    - cell ".gitattributes, (File)" [ref=e367]:
+                      - generic [ref=e368]:
+                        - img [ref=e369]
+                        - link ".gitattributes, (File)" [ref=e374] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/.gitattributes
+                          - text: .gitattributes
+                    - cell [ref=e375]
+                    - cell [ref=e377]
+                  - row ".gitignore, (File)" [ref=e380]:
+                    - cell ".gitignore, (File)" [ref=e381]:
+                      - generic [ref=e382]:
+                        - img [ref=e383]
+                        - link ".gitignore, (File)" [ref=e388] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/.gitignore
+                          - text: .gitignore
+                    - cell [ref=e389]
+                    - cell [ref=e391]
+                  - row ".npmrc, (File)" [ref=e394]:
+                    - cell ".npmrc, (File)" [ref=e395]:
+                      - generic [ref=e396]:
+                        - img [ref=e397]
+                        - link ".npmrc, (File)" [ref=e402] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/.npmrc
+                          - text: .npmrc
+                    - cell [ref=e403]
+                    - cell [ref=e405]
+                  - row ".pre-commit-config.yaml, (File)" [ref=e408]:
+                    - cell ".pre-commit-config.yaml, (File)" [ref=e409]:
+                      - generic [ref=e410]:
+                        - img [ref=e411]
+                        - link ".pre-commit-config.yaml, (File)" [ref=e416] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/.pre-commit-config.yaml
+                          - text: .pre-commit-config.yaml
+                    - cell [ref=e417]
+                    - cell [ref=e419]
+                  - row ".prettierignore, (File)" [ref=e422]:
+                    - cell ".prettierignore, (File)" [ref=e423]:
+                      - generic [ref=e424]:
+                        - img [ref=e425]
+                        - link ".prettierignore, (File)" [ref=e430] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/.prettierignore
+                          - text: .prettierignore
+                    - cell [ref=e431]
+                    - cell [ref=e433]
+                  - row ".prettierrc, (File)" [ref=e436]:
+                    - cell ".prettierrc, (File)" [ref=e437]:
+                      - generic [ref=e438]:
+                        - img [ref=e439]
+                        - link ".prettierrc, (File)" [ref=e444] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/.prettierrc
+                          - text: .prettierrc
+                    - cell [ref=e445]
+                    - cell [ref=e447]
+                  - row "CHANGELOG.md, (File)" [ref=e450]:
+                    - cell "CHANGELOG.md, (File)" [ref=e451]:
+                      - generic [ref=e452]:
+                        - img [ref=e453]
+                        - link "CHANGELOG.md, (File)" [ref=e458] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/CHANGELOG.md
+                          - text: CHANGELOG.md
+                    - cell [ref=e459]
+                    - cell [ref=e461]
+                  - row "CODE_OF_CONDUCT.md, (File)" [ref=e464]:
+                    - cell "CODE_OF_CONDUCT.md, (File)" [ref=e465]:
+                      - generic [ref=e466]:
+                        - img [ref=e467]
+                        - link "CODE_OF_CONDUCT.md, (File)" [ref=e472] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/CODE_OF_CONDUCT.md
+                          - text: CODE_OF_CONDUCT.md
+                    - cell [ref=e473]
+                    - cell [ref=e475]
+                  - row "CONTRIBUTOR_LICENSE_AGREEMENT, (File)" [ref=e478]:
+                    - cell "CONTRIBUTOR_LICENSE_AGREEMENT, (File)" [ref=e479]:
+                      - generic [ref=e480]:
+                        - img [ref=e481]
+                        - link "CONTRIBUTOR_LICENSE_AGREEMENT, (File)" [ref=e486] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/CONTRIBUTOR_LICENSE_AGREEMENT
+                          - text: CONTRIBUTOR_LICENSE_AGREEMENT
+                    - cell [ref=e487]
+                    - cell [ref=e489]
+                  - row "Dockerfile, (File)" [ref=e492]:
+                    - cell "Dockerfile, (File)" [ref=e493]:
+                      - generic [ref=e494]:
+                        - img [ref=e495]
+                        - link "Dockerfile, (File)" [ref=e500] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/Dockerfile
+                          - text: Dockerfile
+                    - cell [ref=e501]
+                    - cell [ref=e503]
+                  - row "LICENSE, (File)" [ref=e506]:
+                    - cell "LICENSE, (File)" [ref=e507]:
+                      - generic [ref=e508]:
+                        - img [ref=e509]
+                        - link "LICENSE, (File)" [ref=e514] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/LICENSE
+                          - text: LICENSE
+                    - cell [ref=e515]
+                    - cell [ref=e517]
+                  - row "LICENSE_HISTORY, (File)" [ref=e520]:
+                    - cell "LICENSE_HISTORY, (File)" [ref=e521]:
+                      - generic [ref=e522]:
+                        - img [ref=e523]
+                        - link "LICENSE_HISTORY, (File)" [ref=e528] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/LICENSE_HISTORY
+                          - text: LICENSE_HISTORY
+                    - cell [ref=e529]
+                    - cell [ref=e531]
+                  - row "LICENSE_NOTICE, (File)" [ref=e534]:
+                    - cell "LICENSE_NOTICE, (File)" [ref=e535]:
+                      - generic [ref=e536]:
+                        - img [ref=e537]
+                        - link "LICENSE_NOTICE, (File)" [ref=e542] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/LICENSE_NOTICE
+                          - text: LICENSE_NOTICE
+                    - cell [ref=e543]
+                    - cell [ref=e545]
+                  - row "Makefile, (File)" [ref=e548]:
+                    - cell "Makefile, (File)" [ref=e549]:
+                      - generic [ref=e550]:
+                        - img [ref=e551]
+                        - link "Makefile, (File)" [ref=e556] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/Makefile
+                          - text: Makefile
+                    - cell [ref=e557]
+                    - cell [ref=e559]
+                  - row "README.md, (File)" [ref=e562]:
+                    - cell "README.md, (File)" [ref=e563]:
+                      - generic [ref=e564]:
+                        - img [ref=e565]
+                        - link "README.md, (File)" [ref=e570] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/README.md
+                          - text: README.md
+                    - cell [ref=e571]
+                    - cell [ref=e573]
+                  - row "TROUBLESHOOTING.md, (File)" [ref=e576]:
+                    - cell "TROUBLESHOOTING.md, (File)" [ref=e577]:
+                      - generic [ref=e578]:
+                        - img [ref=e579]
+                        - link "TROUBLESHOOTING.md, (File)" [ref=e584] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/TROUBLESHOOTING.md
+                          - text: TROUBLESHOOTING.md
+                    - cell [ref=e585]
+                    - cell [ref=e587]
+                  - row "banner.png, (File)" [ref=e590]:
+                    - cell "banner.png, (File)" [ref=e591]:
+                      - generic [ref=e592]:
+                        - img [ref=e593]
+                        - link "banner.png, (File)" [ref=e598] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/banner.png
+                          - text: banner.png
+                    - cell [ref=e599]
+                    - cell [ref=e601]
+                  - row "confirm_remove.sh, (File)" [ref=e604]:
+                    - cell "confirm_remove.sh, (File)" [ref=e605]:
+                      - generic [ref=e606]:
+                        - img [ref=e607]
+                        - link "confirm_remove.sh, (File)" [ref=e612] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/confirm_remove.sh
+                          - text: confirm_remove.sh
+                    - cell [ref=e613]
+                    - cell [ref=e615]
+                  - row "contribution_stats.py, (File)" [ref=e618]:
+                    - cell "contribution_stats.py, (File)" [ref=e619]:
+                      - generic [ref=e620]:
+                        - img [ref=e621]
+                        - link "contribution_stats.py, (File)" [ref=e626] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/contribution_stats.py
+                          - text: contribution_stats.py
+                    - cell [ref=e627]
+                    - cell [ref=e629]
+                  - row "cypress.config.ts, (File)" [ref=e632]:
+                    - cell "cypress.config.ts, (File)" [ref=e633]:
+                      - generic [ref=e634]:
+                        - img [ref=e635]
+                        - link "cypress.config.ts, (File)" [ref=e640] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/cypress.config.ts
+                          - text: cypress.config.ts
+                    - cell [ref=e641]
+                    - cell [ref=e643]
+                  - row "demo.png, (File)" [ref=e646]:
+                    - cell "demo.png, (File)" [ref=e647]:
+                      - generic [ref=e648]:
+                        - img [ref=e649]
+                        - link "demo.png, (File)" [ref=e654] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/demo.png
+                          - text: demo.png
+                    - cell [ref=e655]
+                    - cell [ref=e657]
+                  - row "docker-compose.a1111-test.yaml, (File)" [ref=e660]:
+                    - cell "docker-compose.a1111-test.yaml, (File)" [ref=e661]:
+                      - generic [ref=e662]:
+                        - img [ref=e663]
+                        - link "docker-compose.a1111-test.yaml, (File)" [ref=e668] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/docker-compose.a1111-test.yaml
+                          - text: docker-compose.a1111-test.yaml
+                    - cell [ref=e669]
+                    - cell [ref=e671]
+                  - row "docker-compose.amdgpu.yaml, (File)" [ref=e674]:
+                    - cell "docker-compose.amdgpu.yaml, (File)" [ref=e675]:
+                      - generic [ref=e676]:
+                        - img [ref=e677]
+                        - link "docker-compose.amdgpu.yaml, (File)" [ref=e682] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/docker-compose.amdgpu.yaml
+                          - text: docker-compose.amdgpu.yaml
+                    - cell [ref=e683]
+                    - cell [ref=e685]
+                  - row "docker-compose.api.yaml, (File)" [ref=e688]:
+                    - cell "docker-compose.api.yaml, (File)" [ref=e689]:
+                      - generic [ref=e690]:
+                        - img [ref=e691]
+                        - link "docker-compose.api.yaml, (File)" [ref=e696] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/docker-compose.api.yaml
+                          - text: docker-compose.api.yaml
+                    - cell [ref=e697]
+                    - cell [ref=e699]
+                  - row "docker-compose.data.yaml, (File)" [ref=e702]:
+                    - cell "docker-compose.data.yaml, (File)" [ref=e703]:
+                      - generic [ref=e704]:
+                        - img [ref=e705]
+                        - link "docker-compose.data.yaml, (File)" [ref=e710] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/docker-compose.data.yaml
+                          - text: docker-compose.data.yaml
+                    - cell [ref=e711]
+                    - cell [ref=e713]
+                  - row "docker-compose.gpu.yaml, (File)" [ref=e716]:
+                    - cell "docker-compose.gpu.yaml, (File)" [ref=e717]:
+                      - generic [ref=e718]:
+                        - img [ref=e719]
+                        - link "docker-compose.gpu.yaml, (File)" [ref=e724] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/docker-compose.gpu.yaml
+                          - text: docker-compose.gpu.yaml
+                    - cell [ref=e725]
+                    - cell [ref=e727]
+                  - row "docker-compose.otel.yaml, (File)" [ref=e730]:
+                    - cell "docker-compose.otel.yaml, (File)" [ref=e731]:
+                      - generic [ref=e732]:
+                        - img [ref=e733]
+                        - link "docker-compose.otel.yaml, (File)" [ref=e738] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/docker-compose.otel.yaml
+                          - text: docker-compose.otel.yaml
+                    - cell [ref=e739]
+                    - cell [ref=e741]
+                  - row "docker-compose.playwright.yaml, (File)" [ref=e744]:
+                    - cell "docker-compose.playwright.yaml, (File)" [ref=e745]:
+                      - generic [ref=e746]:
+                        - img [ref=e747]
+                        - link "docker-compose.playwright.yaml, (File)" [ref=e752] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/docker-compose.playwright.yaml
+                          - text: docker-compose.playwright.yaml
+                    - cell [ref=e753]
+                    - cell [ref=e755]
+                  - row "docker-compose.yaml, (File)" [ref=e758]:
+                    - cell "docker-compose.yaml, (File)" [ref=e759]:
+                      - generic [ref=e760]:
+                        - img [ref=e761]
+                        - link "docker-compose.yaml, (File)" [ref=e766] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/docker-compose.yaml
+                          - text: docker-compose.yaml
+                    - cell [ref=e767]
+                    - cell [ref=e769]
+                  - row "hatch_build.py, (File)" [ref=e772]:
+                    - cell "hatch_build.py, (File)" [ref=e773]:
+                      - generic [ref=e774]:
+                        - img [ref=e775]
+                        - link "hatch_build.py, (File)" [ref=e780] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/hatch_build.py
+                          - text: hatch_build.py
+                    - cell [ref=e781]
+                    - cell [ref=e783]
+                  - row "i18next-parser.config.ts, (File)" [ref=e786]:
+                    - cell "i18next-parser.config.ts, (File)" [ref=e787]:
+                      - generic [ref=e788]:
+                        - img [ref=e789]
+                        - link "i18next-parser.config.ts, (File)" [ref=e794] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/i18next-parser.config.ts
+                          - text: i18next-parser.config.ts
+                    - cell [ref=e795]
+                    - cell [ref=e797]
+                  - row "package-lock.json, (File)" [ref=e800]:
+                    - cell "package-lock.json, (File)" [ref=e801]:
+                      - generic [ref=e802]:
+                        - img [ref=e803]
+                        - link "package-lock.json, (File)" [ref=e808] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/package-lock.json
+                          - text: package-lock.json
+                    - cell [ref=e809]
+                    - cell [ref=e811]
+                  - row "package.json, (File)" [ref=e814]:
+                    - cell "package.json, (File)" [ref=e815]:
+                      - generic [ref=e816]:
+                        - img [ref=e817]
+                        - link "package.json, (File)" [ref=e822] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/package.json
+                          - text: package.json
+                    - cell [ref=e823]
+                    - cell [ref=e825]
+                  - row "postcss.config.js, (File)" [ref=e828]:
+                    - cell "postcss.config.js, (File)" [ref=e829]:
+                      - generic [ref=e830]:
+                        - img [ref=e831]
+                        - link "postcss.config.js, (File)" [ref=e836] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/postcss.config.js
+                          - text: postcss.config.js
+                    - cell [ref=e837]
+                    - cell [ref=e839]
+                  - row "pyproject.toml, (File)" [ref=e842]:
+                    - cell "pyproject.toml, (File)" [ref=e843]:
+                      - generic [ref=e844]:
+                        - img [ref=e845]
+                        - link "pyproject.toml, (File)" [ref=e850] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/pyproject.toml
+                          - text: pyproject.toml
+                    - cell [ref=e851]
+                    - cell [ref=e853]
+                  - row "run-compose.sh, (File)" [ref=e856]:
+                    - cell "run-compose.sh, (File)" [ref=e857]:
+                      - generic [ref=e858]:
+                        - img [ref=e859]
+                        - link "run-compose.sh, (File)" [ref=e864] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/run-compose.sh
+                          - text: run-compose.sh
+                    - cell [ref=e865]
+                    - cell [ref=e867]
+                  - row "run-ollama-docker.sh, (File)" [ref=e870]:
+                    - cell "run-ollama-docker.sh, (File)" [ref=e871]:
+                      - generic [ref=e872]:
+                        - img [ref=e873]
+                        - link "run-ollama-docker.sh, (File)" [ref=e878] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/run-ollama-docker.sh
+                          - text: run-ollama-docker.sh
+                    - cell [ref=e879]
+                    - cell [ref=e881]
+                  - row "run.sh, (File)" [ref=e884]:
+                    - cell "run.sh, (File)" [ref=e885]:
+                      - generic [ref=e886]:
+                        - img [ref=e887]
+                        - link "run.sh, (File)" [ref=e892] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/run.sh
+                          - text: run.sh
+                    - cell [ref=e893]
+                    - cell [ref=e895]
+                  - row "svelte.config.js, (File)" [ref=e898]:
+                    - cell "svelte.config.js, (File)" [ref=e899]:
+                      - generic [ref=e900]:
+                        - img [ref=e901]
+                        - link "svelte.config.js, (File)" [ref=e906] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/svelte.config.js
+                          - text: svelte.config.js
+                    - cell [ref=e907]
+                    - cell [ref=e909]
+                  - row "tailwind.config.js, (File)" [ref=e912]:
+                    - cell "tailwind.config.js, (File)" [ref=e913]:
+                      - generic [ref=e914]:
+                        - img [ref=e915]
+                        - link "tailwind.config.js, (File)" [ref=e920] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/tailwind.config.js
+                          - text: tailwind.config.js
+                    - cell [ref=e921]
+                    - cell [ref=e923]
+                  - row "tsconfig.json, (File)" [ref=e926]:
+                    - cell "tsconfig.json, (File)" [ref=e927]:
+                      - generic [ref=e928]:
+                        - img [ref=e929]
+                        - link "tsconfig.json, (File)" [ref=e934] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/tsconfig.json
+                          - text: tsconfig.json
+                    - cell [ref=e935]
+                    - cell [ref=e937]
+                  - row "update_ollama_models.sh, (File)" [ref=e940]:
+                    - cell "update_ollama_models.sh, (File)" [ref=e941]:
+                      - generic [ref=e942]:
+                        - img [ref=e943]
+                        - link "update_ollama_models.sh, (File)" [ref=e948] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/update_ollama_models.sh
+                          - text: update_ollama_models.sh
+                    - cell [ref=e949]
+                    - cell [ref=e951]
+                  - row "uv.lock, (File)" [ref=e954]:
+                    - cell "uv.lock, (File)" [ref=e955]:
+                      - generic [ref=e956]:
+                        - img [ref=e957]
+                        - link "uv.lock, (File)" [ref=e962] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/uv.lock
+                          - text: uv.lock
+                    - cell [ref=e963]
+                    - cell [ref=e965]
+                  - row "vite.config.ts, (File)" [ref=e968]:
+                    - cell "vite.config.ts, (File)" [ref=e969]:
+                      - generic [ref=e970]:
+                        - img [ref=e971]
+                        - link "vite.config.ts, (File)" [ref=e976] [cursor=pointer]:
+                          - /url: /open-webui/open-webui/blob/main/vite.config.ts
+                          - text: vite.config.ts
+                    - cell [ref=e977]
+                    - cell [ref=e979]
+            - generic [ref=e983]:
+              - generic [ref=e984]:
+                - heading "Repository files navigation" [level=2] [ref=e985]
+                - navigation "Repository files" [ref=e986]:
+                  - list [ref=e987]:
+                    - listitem [ref=e988]:
+                      - link "README" [ref=e989] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e991]
+                        - generic [ref=e993]: README
+                    - listitem [ref=e994]:
+                      - link "Code of conduct" [ref=e995] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e997]
+                        - generic [ref=e999]: Code of conduct
+                    - listitem [ref=e1000]:
+                      - link "Contributing" [ref=e1001] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e1003]
+                        - generic [ref=e1005]: Contributing
+                    - listitem [ref=e1006]:
+                      - link "License" [ref=e1007] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e1009]
+                        - generic [ref=e1011]: License
+                    - listitem [ref=e1012]:
+                      - link "Security" [ref=e1013] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e1015]
+                        - generic [ref=e1017]: Security
+                - button "Outline" [ref=e1018] [cursor=pointer]:
+                  - img [ref=e1019]
+              - article [ref=e1022]:
+                - generic [ref=e1023]:
+                  - heading "Open WebUI 👋" [level=1] [ref=e1024]
+                  - 'link "Permalink: Open WebUI 👋" [ref=e1025] [cursor=pointer]':
+                    - /url: "#open-webui-"
+                    - img [ref=e1026]
+                - paragraph [ref=e1028]:
+                  - link "GitHub stars" [ref=e1029] [cursor=pointer]:
+                    - /url: https://camo.githubusercontent.com/26427a0ed61c3edfe1b60d1f2bf2c3d7fd48dd46d9170843930b763469e45645/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6f70656e2d77656275692f6f70656e2d77656275693f7374796c653d736f6369616c
+                    - img "GitHub stars" [ref=e1030]
+                  - link "GitHub forks" [ref=e1031] [cursor=pointer]:
+                    - /url: https://camo.githubusercontent.com/44f2f4a7a2286df63e9977f4d2adad1d56186245b8c4fde2a5855610a13ead23/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f666f726b732f6f70656e2d77656275692f6f70656e2d77656275693f7374796c653d736f6369616c
+                    - img "GitHub forks" [ref=e1032]
+                  - link "GitHub watchers" [ref=e1033] [cursor=pointer]:
+                    - /url: https://camo.githubusercontent.com/aa0a7ddaa59e26f1a9c0f02a640ba4dd44219f62b102e22d378b57eef42b181b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f77617463686572732f6f70656e2d77656275692f6f70656e2d77656275693f7374796c653d736f6369616c
+                    - img "GitHub watchers" [ref=e1034]
+                  - link "GitHub repo size" [ref=e1035] [cursor=pointer]:
+                    - /url: https://camo.githubusercontent.com/7961cd9a98d3cb275e12b4733a047be12b1ed3750565ce4e74195693a7f32bb2/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f7265706f2d73697a652f6f70656e2d77656275692f6f70656e2d7765627569
+                    - img "GitHub repo size" [ref=e1036]
+                  - link "GitHub language count" [ref=e1037] [cursor=pointer]:
+                    - /url: https://camo.githubusercontent.com/ca888442dfd2424594f4935b730f2807aee2953b32d689567e9615965ec196fd/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c616e6775616765732f636f756e742f6f70656e2d77656275692f6f70656e2d7765627569
+                    - img "GitHub language count" [ref=e1038]
+                  - link "GitHub top language" [ref=e1039] [cursor=pointer]:
+                    - /url: https://camo.githubusercontent.com/7c2ad79314ad08f74ad511df6e3f37f6d8bc3d8343e5189b654b146eed8e4f0c/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c616e6775616765732f746f702f6f70656e2d77656275692f6f70656e2d7765627569
+                    - img "GitHub top language" [ref=e1040]
+                  - link "GitHub last commit" [ref=e1041] [cursor=pointer]:
+                    - /url: https://camo.githubusercontent.com/f8fb32b5973b26a828fe1dba461e9118d1fbdb1087de6d7454ccbe30ab7a312a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6173742d636f6d6d69742f6f70656e2d77656275692f6f70656e2d77656275693f636f6c6f723d726564
+                    - img "GitHub last commit" [ref=e1042]
+                  - link "Discord" [ref=e1043] [cursor=pointer]:
+                    - /url: https://discord.gg/5rJgQTnV4s
+                    - img "Discord" [ref=e1044]
+                  - link [ref=e1045] [cursor=pointer]:
+                    - /url: https://github.com/sponsors/tjbck
+                - paragraph [ref=e1046]:
+                  - link "Open WebUI Banner" [ref=e1047] [cursor=pointer]:
+                    - /url: /open-webui/open-webui/blob/main/banner.png
+                    - img "Open WebUI Banner" [ref=e1048]
+                - paragraph [ref=e1049]:
+                  - strong [ref=e1050]:
+                    - text: Open WebUI is an
+                    - link "extensible" [ref=e1051] [cursor=pointer]:
+                      - /url: https://docs.openwebui.com/features/extensibility/plugin
+                    - text: ", feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline."
+                  - text: It supports various LLM runners like
+                  - strong [ref=e1052]: Ollama
+                  - text: and
+                  - strong [ref=e1053]: OpenAI-compatible APIs
+                  - text: ", with"
+                  - strong [ref=e1054]: built-in inference engine
+                  - text: for RAG, making it a
+                  - strong [ref=e1055]: powerful AI deployment solution
+                  - text: .
+                - paragraph [ref=e1056]:
+                  - text: Passionate about open-source AI?
+                  - link "Join our team →" [ref=e1057] [cursor=pointer]:
+                    - /url: https://careers.openwebui.com/
+                - paragraph [ref=e1058]:
+                  - link "Open WebUI Demo" [ref=e1059] [cursor=pointer]:
+                    - /url: /open-webui/open-webui/blob/main/demo.png
+                    - img "Open WebUI Demo" [ref=e1060]
+                - generic [ref=e1061]:
+                  - paragraph [ref=e1062]:
+                    - img [ref=e1063]
+                    - text: Tip
+                  - paragraph [ref=e1065]:
+                    - strong [ref=e1066]:
+                      - text: Looking for an
+                      - link "Enterprise Plan" [ref=e1067] [cursor=pointer]:
+                        - /url: https://docs.openwebui.com/enterprise
+                      - text: "?"
+                    - text: –
+                    - strong [ref=e1068]:
+                      - link "Speak with Our Sales Team Today!" [ref=e1069] [cursor=pointer]:
+                        - /url: https://docs.openwebui.com/enterprise
+                  - paragraph [ref=e1070]:
+                    - text: Get
+                    - strong [ref=e1071]: enhanced capabilities
+                    - text: ", including"
+                    - strong [ref=e1072]: custom theming and branding
+                    - text: ","
+                    - strong [ref=e1073]: Service Level Agreement (SLA) support
+                    - text: ","
+                    - strong [ref=e1074]: Long-Term Support (LTS) versions
+                    - text: ", and"
+                    - strong [ref=e1075]: more!
+                - paragraph [ref=e1076]:
+                  - text: For more information, be sure to check out our
+                  - link "Open WebUI Documentation" [ref=e1077] [cursor=pointer]:
+                    - /url: https://docs.openwebui.com/
+                  - text: .
+                - generic [ref=e1078]:
+                  - heading "Key Features of Open WebUI ⭐" [level=2] [ref=e1079]
+                  - 'link "Permalink: Key Features of Open WebUI ⭐" [ref=e1080] [cursor=pointer]':
+                    - /url: "#key-features-of-open-webui-"
+                    - img [ref=e1081]
+                - list [ref=e1083]:
+                  - listitem [ref=e1084]:
+                    - paragraph [ref=e1085]:
+                      - text: 🚀
+                      - strong [ref=e1086]: Effortless Setup
+                      - text: ": Install seamlessly using Docker or Kubernetes (kubectl, kustomize or helm) for a hassle-free experience with support for both"
+                      - code [ref=e1087]: :ollama
+                      - text: and
+                      - code [ref=e1088]: :cuda
+                      - text: tagged images.
+                  - listitem [ref=e1089]:
+                    - paragraph [ref=e1090]:
+                      - text: 🤝
+                      - strong [ref=e1091]: Ollama/OpenAI API Integration
+                      - text: ": Effortlessly integrate OpenAI-compatible APIs for versatile conversations alongside Ollama models. Customize the OpenAI API URL to link with"
+                      - strong [ref=e1092]: LMStudio, GroqCloud, Mistral, OpenRouter, and more
+                      - text: .
+                  - listitem [ref=e1093]:
+                    - paragraph [ref=e1094]:
+                      - text: 🛡️
+                      - strong [ref=e1095]: Granular Permissions and User Groups
+                      - text: ": By allowing administrators to create detailed user roles and permissions, we ensure a secure user environment. This granularity not only enhances security but also allows for customized user experiences, fostering a sense of ownership and responsibility amongst users."
+                  - listitem [ref=e1096]:
+                    - paragraph [ref=e1097]:
+                      - text: 📱
+                      - strong [ref=e1098]: Responsive Design
+                      - text: ": Enjoy a seamless experience across Desktop PC, Laptop, and Mobile devices."
+                  - listitem [ref=e1099]:
+                    - paragraph [ref=e1100]:
+                      - text: 📱
+                      - strong [ref=e1101]: Progressive Web App (PWA) for Mobile
+                      - text: ": Enjoy a native app-like experience on your mobile device with our PWA, providing offline access on localhost and a seamless user interface."
+                  - listitem [ref=e1102]:
+                    - paragraph [ref=e1103]:
+                      - text: ✒️🔢
+                      - strong [ref=e1104]: Full Markdown and LaTeX Support
+                      - text: ": Elevate your LLM experience with comprehensive Markdown and LaTeX capabilities for enriched interaction."
+                  - listitem [ref=e1105]:
+                    - paragraph [ref=e1106]:
+                      - text: 🎤📹
+                      - strong [ref=e1107]: Hands-Free Voice/Video Call
+                      - text: ": Experience seamless communication with integrated hands-free voice and video call features using multiple Speech-to-Text providers (Local Whisper, OpenAI, Deepgram, Azure) and Text-to-Speech engines (Azure, ElevenLabs, OpenAI, Transformers, WebAPI), allowing for dynamic and interactive chat environments."
+                  - listitem [ref=e1108]:
+                    - paragraph [ref=e1109]:
+                      - text: 🛠️
+                      - strong [ref=e1110]: Model Builder
+                      - text: ": Easily create Ollama models via the Web UI. Create and add custom characters/agents, customize chat elements, and import models effortlessly through"
+                      - link "Open WebUI Community" [ref=e1111] [cursor=pointer]:
+                        - /url: https://openwebui.com/
+                      - text: integration.
+                  - listitem [ref=e1112]:
+                    - paragraph [ref=e1113]:
+                      - text: 🐍
+                      - strong [ref=e1114]: Native Python Function Calling Tool
+                      - text: ": Enhance your LLMs with built-in code editor support in the tools workspace. Bring Your Own Function (BYOF) by simply adding your pure Python functions, enabling seamless integration with LLMs."
+                  - listitem [ref=e1115]:
+                    - paragraph [ref=e1116]:
+                      - text: 💾
+                      - strong [ref=e1117]: Persistent Artifact Storage
+                      - text: ": Built-in key-value storage API for artifacts, enabling features like journals, trackers, leaderboards, and collaborative tools with both personal and shared data scopes across sessions."
+                  - listitem [ref=e1118]:
+                    - paragraph [ref=e1119]:
+                      - text: 📚
+                      - strong [ref=e1120]: Local RAG Integration
+                      - text: ": Dive into the future of chat interactions with groundbreaking Retrieval Augmented Generation (RAG) support using your choice of 9 vector databases and multiple content extraction engines (Tika, Docling, Document Intelligence, Mistral OCR, External loaders). Load documents directly into chat or add files to your document library, effortlessly accessing them using the"
+                      - code [ref=e1121]: "#"
+                      - text: command before a query.
+                  - listitem [ref=e1122]:
+                    - paragraph [ref=e1123]:
+                      - text: 🔍
+                      - strong [ref=e1124]: Web Search for RAG
+                      - text: ": Perform web searches using 15+ providers including"
+                      - code [ref=e1125]: SearXNG
+                      - text: ","
+                      - code [ref=e1126]: Google PSE
+                      - text: ","
+                      - code [ref=e1127]: Brave Search
+                      - text: ","
+                      - code [ref=e1128]: Kagi
+                      - text: ","
+                      - code [ref=e1129]: Mojeek
+                      - text: ","
+                      - code [ref=e1130]: Tavily
+                      - text: ","
+                      - code [ref=e1131]: Perplexity
+                      - text: ","
+                      - code [ref=e1132]: serpstack
+                      - text: ","
+                      - code [ref=e1133]: serper
+                      - text: ","
+                      - code [ref=e1134]: Serply
+                      - text: ","
+                      - code [ref=e1135]: DuckDuckGo
+                      - text: ","
+                      - code [ref=e1136]: SearchApi
+                      - text: ","
+                      - code [ref=e1137]: SerpApi
+                      - text: ","
+                      - code [ref=e1138]: Bing
+                      - text: ","
+                      - code [ref=e1139]: Jina
+                      - text: ","
+                      - code [ref=e1140]: Exa
+                      - text: ","
+                      - code [ref=e1141]: Sougou
+                      - text: ","
+                      - code [ref=e1142]: Azure AI Search
+                      - text: ", and"
+                      - code [ref=e1143]: Ollama Cloud
+                      - text: ", injecting results directly into your chat experience."
+                  - listitem [ref=e1144]:
+                    - paragraph [ref=e1145]:
+                      - text: 🌐
+                      - strong [ref=e1146]: Web Browsing Capability
+                      - text: ": Seamlessly integrate websites into your chat experience using the"
+                      - code [ref=e1147]: "#"
+                      - text: command followed by a URL. This feature allows you to incorporate web content directly into your conversations, enhancing the richness and depth of your interactions.
+                  - listitem [ref=e1148]:
+                    - paragraph [ref=e1149]:
+                      - text: 🎨
+                      - strong [ref=e1150]: Image Generation & Editing Integration
+                      - text: ": Create and edit images using multiple engines including OpenAI's DALL-E, Gemini, ComfyUI (local), and AUTOMATIC1111 (local), with support for both generation and prompt-based editing workflows."
+                  - listitem [ref=e1151]:
+                    - paragraph [ref=e1152]:
+                      - text: ⚙️
+                      - strong [ref=e1153]: Many Models Conversations
+                      - text: ": Effortlessly engage with various models simultaneously, harnessing their unique strengths for optimal responses. Enhance your experience by leveraging a diverse set of models in parallel."
+                  - listitem [ref=e1154]:
+                    - paragraph [ref=e1155]:
+                      - text: 🔐
+                      - strong [ref=e1156]: Role-Based Access Control (RBAC)
+                      - text: ": Ensure secure access with restricted permissions; only authorized individuals can access your Ollama, and exclusive model creation/pulling rights are reserved for administrators."
+                  - listitem [ref=e1157]:
+                    - paragraph [ref=e1158]:
+                      - text: 🗄️
+                      - strong [ref=e1159]: Flexible Database & Storage Options
+                      - text: ": Choose from SQLite (with optional encryption), PostgreSQL, or configure cloud storage backends (S3, Google Cloud Storage, Azure Blob Storage) for scalable deployments."
+                  - listitem [ref=e1160]:
+                    - paragraph [ref=e1161]:
+                      - text: 🔍
+                      - strong [ref=e1162]: Advanced Vector Database Support
+                      - text: ": Select from 9 vector database options including ChromaDB, PGVector, Qdrant, Milvus, Elasticsearch, OpenSearch, Pinecone, S3Vector, and Oracle 23ai for optimal RAG performance."
+                  - listitem [ref=e1163]:
+                    - paragraph [ref=e1164]:
+                      - text: 🔐
+                      - strong [ref=e1165]: Enterprise Authentication
+                      - text: ": Full support for LDAP/Active Directory integration, SCIM 2.0 automated provisioning, and SSO via trusted headers alongside OAuth providers. Enterprise-grade user and group provisioning through SCIM 2.0 protocol, enabling seamless integration with identity providers like Okta, Azure AD, and Google Workspace for automated user lifecycle management."
+                  - listitem [ref=e1166]:
+                    - paragraph [ref=e1167]:
+                      - text: ☁️
+                      - strong [ref=e1168]: Cloud-Native Integration
+                      - text: ": Native support for Google Drive and OneDrive/SharePoint file picking, enabling seamless document import from enterprise cloud storage."
+                  - listitem [ref=e1169]:
+                    - paragraph [ref=e1170]:
+                      - text: 📊
+                      - strong [ref=e1171]: Production Observability
+                      - text: ": Built-in OpenTelemetry support for traces, metrics, and logs, enabling comprehensive monitoring with your existing observability stack."
+                  - listitem [ref=e1172]:
+                    - paragraph [ref=e1173]:
+                      - text: ⚖️
+                      - strong [ref=e1174]: Horizontal Scalability
+                      - text: ": Redis-backed session management and WebSocket support for multi-worker and multi-node deployments behind load balancers."
+                  - listitem [ref=e1175]:
+                    - paragraph [ref=e1176]:
+                      - text: 🌐🌍
+                      - strong [ref=e1177]: Multilingual Support
+                      - text: ": Experience Open WebUI in your preferred language with our internationalization (i18n) support. Join us in expanding our supported languages! We're actively seeking contributors!"
+                  - listitem [ref=e1178]:
+                    - paragraph [ref=e1179]:
+                      - text: 🧩
+                      - strong [ref=e1180]: Pipelines, Open WebUI Plugin Support
+                      - text: ": Seamlessly integrate custom logic and Python libraries into Open WebUI using"
+                      - link "Pipelines Plugin Framework" [ref=e1181] [cursor=pointer]:
+                        - /url: https://github.com/open-webui/pipelines
+                      - text: . Launch your Pipelines instance, set the OpenAI URL to the Pipelines URL, and explore endless possibilities.
+                      - link "Examples" [ref=e1182] [cursor=pointer]:
+                        - /url: https://github.com/open-webui/pipelines/tree/main/examples
+                      - text: include
+                      - strong [ref=e1183]: Function Calling
+                      - text: ", User"
+                      - strong [ref=e1184]: Rate Limiting
+                      - text: to control access,
+                      - strong [ref=e1185]: Usage Monitoring
+                      - text: with tools like Langfuse,
+                      - strong [ref=e1186]: Live Translation with LibreTranslate
+                      - text: for multilingual support,
+                      - strong [ref=e1187]: Toxic Message Filtering
+                      - text: and much more.
+                  - listitem [ref=e1188]:
+                    - paragraph [ref=e1189]:
+                      - text: 🌟
+                      - strong [ref=e1190]: Continuous Updates
+                      - text: ": We are committed to improving Open WebUI with regular updates, fixes, and new features."
+                - paragraph [ref=e1191]:
+                  - text: Want to learn more about Open WebUI's features? Check out our
+                  - link "Open WebUI documentation" [ref=e1192] [cursor=pointer]:
+                    - /url: https://docs.openwebui.com/features
+                  - text: for a comprehensive overview!
+                - separator [ref=e1193]
+                - paragraph [ref=e1194]: We are incredibly grateful for the generous support of our sponsors. Their contributions help us to maintain and improve our project, ensuring we can continue to deliver quality work to our community. Thank you!
+                - generic [ref=e1195]:
+                  - heading "How to Install 🚀" [level=2] [ref=e1196]
+                  - 'link "Permalink: How to Install 🚀" [ref=e1197] [cursor=pointer]':
+                    - /url: "#how-to-install-"
+                    - img [ref=e1198]
+                - generic [ref=e1200]:
+                  - heading "Installation via Python pip 🐍" [level=3] [ref=e1201]
+                  - 'link "Permalink: Installation via Python pip 🐍" [ref=e1202] [cursor=pointer]':
+                    - /url: "#installation-via-python-pip-"
+                    - img [ref=e1203]
+                - paragraph [ref=e1205]:
+                  - text: Open WebUI can be installed using pip, the Python package installer. Before proceeding, ensure you're using
+                  - strong [ref=e1206]: Python 3.11
+                  - text: to avoid compatibility issues.
+                - list [ref=e1207]:
+                  - listitem [ref=e1208]:
+                    - paragraph [ref=e1209]:
+                      - strong [ref=e1210]: Install Open WebUI
+                      - text: ": Open your terminal and run the following command to install Open WebUI:"
+                    - generic [ref=e1211]:
+                      - generic [ref=e1212]: pip install open-webui
+                      - button "Copy" [ref=e1214] [cursor=pointer]:
+                        - img [ref=e1215]
+                  - listitem [ref=e1218]:
+                    - paragraph [ref=e1219]:
+                      - strong [ref=e1220]: Running Open WebUI
+                      - text: ": After installation, you can start Open WebUI by executing:"
+                    - generic [ref=e1221]:
+                      - generic [ref=e1222]: open-webui serve
+                      - button "Copy" [ref=e1224] [cursor=pointer]:
+                        - img [ref=e1225]
+                - paragraph [ref=e1228]:
+                  - text: This will start the Open WebUI server, which you can access at
+                  - link "http://localhost:8080" [ref=e1229] [cursor=pointer]:
+                    - /url: http://localhost:8080
+                - generic [ref=e1230]:
+                  - heading "Quick Start with Docker 🐳" [level=3] [ref=e1231]
+                  - 'link "Permalink: Quick Start with Docker 🐳" [ref=e1232] [cursor=pointer]':
+                    - /url: "#quick-start-with-docker-"
+                    - img [ref=e1233]
+                - generic [ref=e1235]:
+                  - paragraph [ref=e1236]:
+                    - img [ref=e1237]
+                    - text: Note
+                  - paragraph [ref=e1239]:
+                    - text: Please note that for certain Docker environments, additional configurations might be needed. If you encounter any connection issues, our detailed guide on
+                    - link "Open WebUI Documentation" [ref=e1240] [cursor=pointer]:
+                      - /url: https://docs.openwebui.com/
+                    - text: is ready to assist you.
+                - generic [ref=e1241]:
+                  - paragraph [ref=e1242]:
+                    - img [ref=e1243]
+                    - text: Warning
+                  - paragraph [ref=e1245]:
+                    - text: When using Docker to install Open WebUI, make sure to include the
+                    - code [ref=e1246]: "-v open-webui:/app/backend/data"
+                    - text: in your Docker command. This step is crucial as it ensures your database is properly mounted and prevents any loss of data.
+                - generic [ref=e1247]:
+                  - paragraph [ref=e1248]:
+                    - img [ref=e1249]
+                    - text: Tip
+                  - paragraph [ref=e1251]:
+                    - text: If you wish to utilize Open WebUI with Ollama included or CUDA acceleration, we recommend utilizing our official images tagged with either
+                    - code [ref=e1252]: :cuda
+                    - text: or
+                    - code [ref=e1253]: :ollama
+                    - text: . To enable CUDA, you must install the
+                    - link "Nvidia CUDA container toolkit" [ref=e1254] [cursor=pointer]:
+                      - /url: https://docs.nvidia.com/dgx/nvidia-container-runtime-upgrade/
+                    - text: on your Linux/WSL system.
+                - generic [ref=e1255]:
+                  - heading "Installation with Default Configuration" [level=3] [ref=e1256]
+                  - 'link "Permalink: Installation with Default Configuration" [ref=e1257] [cursor=pointer]':
+                    - /url: "#installation-with-default-configuration"
+                    - img [ref=e1258]
+                - list [ref=e1260]:
+                  - listitem [ref=e1261]:
+                    - paragraph [ref=e1262]:
+                      - strong [ref=e1263]: If Ollama is on your computer
+                      - text: ", use this command:"
+                    - generic [ref=e1264]:
+                      - generic [ref=e1265]: docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+                      - button "Copy" [ref=e1267] [cursor=pointer]:
+                        - img [ref=e1268]
+                  - listitem [ref=e1271]:
+                    - paragraph [ref=e1272]:
+                      - strong [ref=e1273]: If Ollama is on a Different Server
+                      - text: ", use this command:"
+                    - paragraph [ref=e1274]:
+                      - text: To connect to Ollama on another server, change the
+                      - code [ref=e1275]: OLLAMA_BASE_URL
+                      - text: "to the server's URL:"
+                    - generic [ref=e1276]:
+                      - generic [ref=e1277]: docker run -d -p 3000:8080 -e OLLAMA_BASE_URL=https://example.com -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+                      - button "Copy" [ref=e1279] [cursor=pointer]:
+                        - img [ref=e1280]
+                  - listitem [ref=e1283]:
+                    - paragraph [ref=e1284]:
+                      - strong [ref=e1285]: To run Open WebUI with Nvidia GPU support
+                      - text: ", use this command:"
+                    - generic [ref=e1286]:
+                      - generic [ref=e1287]: docker run -d -p 3000:8080 --gpus all --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:cuda
+                      - button "Copy" [ref=e1289] [cursor=pointer]:
+                        - img [ref=e1290]
+                - generic [ref=e1293]:
+                  - heading "Installation for OpenAI API Usage Only" [level=3] [ref=e1294]
+                  - 'link "Permalink: Installation for OpenAI API Usage Only" [ref=e1295] [cursor=pointer]':
+                    - /url: "#installation-for-openai-api-usage-only"
+                    - img [ref=e1296]
+                - list [ref=e1298]:
+                  - listitem [ref=e1299]:
+                    - paragraph [ref=e1300]:
+                      - strong [ref=e1301]: If you're only using OpenAI API
+                      - text: ", use this command:"
+                    - generic [ref=e1302]:
+                      - generic [ref=e1303]: docker run -d -p 3000:8080 -e OPENAI_API_KEY=your_secret_key -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+                      - button "Copy" [ref=e1305] [cursor=pointer]:
+                        - img [ref=e1306]
+                - generic [ref=e1309]:
+                  - heading "Installing Open WebUI with Bundled Ollama Support" [level=3] [ref=e1310]
+                  - 'link "Permalink: Installing Open WebUI with Bundled Ollama Support" [ref=e1311] [cursor=pointer]':
+                    - /url: "#installing-open-webui-with-bundled-ollama-support"
+                    - img [ref=e1312]
+                - paragraph [ref=e1314]: "This installation method uses a single container image that bundles Open WebUI with Ollama, allowing for a streamlined setup via a single command. Choose the appropriate command based on your hardware setup:"
+                - list [ref=e1315]:
+                  - listitem [ref=e1316]:
+                    - paragraph [ref=e1317]:
+                      - strong [ref=e1318]: With GPU Support
+                      - text: ": Utilize GPU resources by running the following command:"
+                    - generic [ref=e1319]:
+                      - generic [ref=e1320]: docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama
+                      - button "Copy" [ref=e1322] [cursor=pointer]:
+                        - img [ref=e1323]
+                  - listitem [ref=e1326]:
+                    - paragraph [ref=e1327]:
+                      - strong [ref=e1328]: For CPU Only
+                      - text: ": If you're not using a GPU, use this command instead:"
+                    - generic [ref=e1329]:
+                      - generic [ref=e1330]: docker run -d -p 3000:8080 -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama
+                      - button "Copy" [ref=e1332] [cursor=pointer]:
+                        - img [ref=e1333]
+                - paragraph [ref=e1336]: Both commands facilitate a built-in, hassle-free installation of both Open WebUI and Ollama, ensuring that you can get everything up and running swiftly.
+                - paragraph [ref=e1337]:
+                  - text: After installation, you can access Open WebUI at
+                  - link "http://localhost:3000" [ref=e1338] [cursor=pointer]:
+                    - /url: http://localhost:3000
+                  - text: . Enjoy! 😄
+                - generic [ref=e1339]:
+                  - heading "Other Installation Methods" [level=3] [ref=e1340]
+                  - 'link "Permalink: Other Installation Methods" [ref=e1341] [cursor=pointer]':
+                    - /url: "#other-installation-methods"
+                    - img [ref=e1342]
+                - paragraph [ref=e1344]:
+                  - text: We offer various installation alternatives, including non-Docker native installation methods, Docker Compose, Kustomize, and Helm. Visit our
+                  - link "Open WebUI Documentation" [ref=e1345] [cursor=pointer]:
+                    - /url: https://docs.openwebui.com/getting-started/
+                  - text: or join our
+                  - link "Discord community" [ref=e1346] [cursor=pointer]:
+                    - /url: https://discord.gg/5rJgQTnV4s
+                  - text: for comprehensive guidance.
+                - paragraph [ref=e1347]:
+                  - text: Look at the
+                  - link "Local Development Guide" [ref=e1348] [cursor=pointer]:
+                    - /url: https://docs.openwebui.com/getting-started/development
+                  - text: for instructions on setting up a local development environment.
+                - generic [ref=e1349]:
+                  - heading "Troubleshooting" [level=3] [ref=e1350]
+                  - 'link "Permalink: Troubleshooting" [ref=e1351] [cursor=pointer]':
+                    - /url: "#troubleshooting"
+                    - img [ref=e1352]
+                - paragraph [ref=e1354]:
+                  - text: Encountering connection issues? Our
+                  - link "Open WebUI Documentation" [ref=e1355] [cursor=pointer]:
+                    - /url: https://docs.openwebui.com/troubleshooting/
+                  - text: has got you covered. For further assistance and to join our vibrant community, visit the
+                  - link "Open WebUI Discord" [ref=e1356] [cursor=pointer]:
+                    - /url: https://discord.gg/5rJgQTnV4s
+                  - text: .
+                - generic [ref=e1357]:
+                  - 'heading "Open WebUI: Server Connection Error" [level=4] [ref=e1358]'
+                  - 'link "Permalink: Open WebUI: Server Connection Error" [ref=e1359] [cursor=pointer]':
+                    - /url: "#open-webui-server-connection-error"
+                    - img [ref=e1360]
+                - paragraph [ref=e1362]:
+                  - text: If you're experiencing connection issues, it’s often due to the WebUI docker container not being able to reach the Ollama server at 127.0.0.1:11434 (host.docker.internal:11434) inside the container . Use the
+                  - code [ref=e1363]: "--network=host"
+                  - text: "flag in your docker command to resolve this. Note that the port changes from 3000 to 8080, resulting in the link:"
+                  - code [ref=e1364]: http://localhost:8080
+                  - text: .
+                - paragraph [ref=e1365]:
+                  - strong [ref=e1366]: Example Docker Command
+                  - text: ":"
+                - generic [ref=e1367]:
+                  - generic [ref=e1368]: docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+                  - button "Copy" [ref=e1370] [cursor=pointer]:
+                    - img [ref=e1371]
+                - generic [ref=e1374]:
+                  - heading "Keeping Your Docker Installation Up-to-Date" [level=3] [ref=e1375]
+                  - 'link "Permalink: Keeping Your Docker Installation Up-to-Date" [ref=e1376] [cursor=pointer]':
+                    - /url: "#keeping-your-docker-installation-up-to-date"
+                    - img [ref=e1377]
+                - paragraph [ref=e1379]:
+                  - text: Check our Updating Guide available in our
+                  - link "Open WebUI Documentation" [ref=e1380] [cursor=pointer]:
+                    - /url: https://docs.openwebui.com/getting-started/updating
+                  - text: .
+                - generic [ref=e1381]:
+                  - heading "Using the Dev Branch 🌙" [level=3] [ref=e1382]
+                  - 'link "Permalink: Using the Dev Branch 🌙" [ref=e1383] [cursor=pointer]':
+                    - /url: "#using-the-dev-branch-"
+                    - img [ref=e1384]
+                - generic [ref=e1386]:
+                  - paragraph [ref=e1387]:
+                    - img [ref=e1388]
+                    - text: Warning
+                  - paragraph [ref=e1390]:
+                    - text: The
+                    - code [ref=e1391]: :dev
+                    - text: branch contains the latest unstable features and changes. Use it at your own risk as it may have bugs or incomplete features.
+                - paragraph [ref=e1392]:
+                  - text: If you want to try out the latest bleeding-edge features and are okay with occasional instability, you can use the
+                  - code [ref=e1393]: :dev
+                  - text: "tag like this:"
+                - generic [ref=e1394]:
+                  - generic [ref=e1395]: docker run -d -p 3000:8080 -v open-webui:/app/backend/data --name open-webui --add-host=host.docker.internal:host-gateway --restart always ghcr.io/open-webui/open-webui:dev
+                  - button "Copy" [ref=e1397] [cursor=pointer]:
+                    - img [ref=e1398]
+                - generic [ref=e1401]:
+                  - heading "Offline Mode" [level=3] [ref=e1402]
+                  - 'link "Permalink: Offline Mode" [ref=e1403] [cursor=pointer]':
+                    - /url: "#offline-mode"
+                    - img [ref=e1404]
+                - paragraph [ref=e1406]:
+                  - text: If you are running Open WebUI in an offline environment, you can set the
+                  - code [ref=e1407]: HF_HUB_OFFLINE
+                  - text: environment variable to
+                  - code [ref=e1408]: "1"
+                  - text: to prevent attempts to download models from the internet.
+                - generic [ref=e1409]:
+                  - generic [ref=e1410]: export HF_HUB_OFFLINE=1
+                  - button "Copy" [ref=e1412] [cursor=pointer]:
+                    - img [ref=e1413]
+                - generic [ref=e1416]:
+                  - heading "What's Next? 🌟" [level=2] [ref=e1417]
+                  - 'link "Permalink: What''s Next? 🌟" [ref=e1418] [cursor=pointer]':
+                    - /url: "#whats-next-"
+                    - img [ref=e1419]
+                - paragraph [ref=e1421]:
+                  - text: Discover upcoming features on our roadmap in the
+                  - link "Open WebUI Documentation" [ref=e1422] [cursor=pointer]:
+                    - /url: https://docs.openwebui.com/roadmap/
+                  - text: .
+                - generic [ref=e1423]:
+                  - heading "License 📜" [level=2] [ref=e1424]
+                  - 'link "Permalink: License 📜" [ref=e1425] [cursor=pointer]':
+                    - /url: "#license-"
+                    - img [ref=e1426]
+                - paragraph [ref=e1428]:
+                  - text: This project contains code under multiple licenses. The current codebase includes components licensed under the Open WebUI License with an additional requirement to preserve the "Open WebUI" branding, as well as prior contributions under their respective original licenses. For a detailed record of license changes and the applicable terms for each section of the code, please refer to
+                  - link "LICENSE_HISTORY" [ref=e1429] [cursor=pointer]:
+                    - /url: /open-webui/open-webui/blob/main/LICENSE_HISTORY
+                  - text: . For complete and updated licensing details, please see the
+                  - link "LICENSE" [ref=e1430] [cursor=pointer]:
+                    - /url: /open-webui/open-webui/blob/main/LICENSE
+                  - text: and
+                  - link "LICENSE_HISTORY" [ref=e1431] [cursor=pointer]:
+                    - /url: /open-webui/open-webui/blob/main/LICENSE_HISTORY
+                  - text: files.
+                - generic [ref=e1432]:
+                  - heading "Support 💬" [level=2] [ref=e1433]
+                  - 'link "Permalink: Support 💬" [ref=e1434] [cursor=pointer]':
+                    - /url: "#support-"
+                    - img [ref=e1435]
+                - paragraph [ref=e1437]:
+                  - text: If you have any questions, suggestions, or need assistance, please open an issue or join our
+                  - link "Open WebUI Discord community" [ref=e1438] [cursor=pointer]:
+                    - /url: https://discord.gg/5rJgQTnV4s
+                  - text: to connect with us! 🤝
+                - generic [ref=e1439]:
+                  - heading "Star History" [level=2] [ref=e1440]
+                  - 'link "Permalink: Star History" [ref=e1441] [cursor=pointer]':
+                    - /url: "#star-history"
+                    - img [ref=e1442]
+                - link [ref=e1444] [cursor=pointer]:
+                  - /url: https://star-history.com/#open-webui/open-webui&Date
+                - separator [ref=e1445]
+                - paragraph [ref=e1446]:
+                  - text: Created by
+                  - link "Timothy Jaeryang Baek" [ref=e1447] [cursor=pointer]:
+                    - /url: https://github.com/tjbck
+                  - text: "- Let's make Open WebUI even more amazing together! 💪"
+        - generic [ref=e1451]:
+          - generic [ref=e1454]:
+            - heading "About" [level=2] [ref=e1455]
+            - paragraph [ref=e1456]: User-friendly AI Interface (Supports Ollama, OpenAI API, ...)
+            - generic [ref=e1457]:
+              - img [ref=e1458]
+              - link "openwebui.com" [ref=e1461] [cursor=pointer]:
+                - /url: https://openwebui.com
+            - heading "Topics" [level=3] [ref=e1462]
+            - generic [ref=e1464]:
+              - link "ui" [ref=e1465] [cursor=pointer]:
+                - /url: /topics/ui
+              - link "ai" [ref=e1466] [cursor=pointer]:
+                - /url: /topics/ai
+              - link "mcp" [ref=e1467] [cursor=pointer]:
+                - /url: /topics/mcp
+              - link "openapi" [ref=e1468] [cursor=pointer]:
+                - /url: /topics/openapi
+              - link "self-hosted" [ref=e1469] [cursor=pointer]:
+                - /url: /topics/self-hosted
+              - link "openai" [ref=e1470] [cursor=pointer]:
+                - /url: /topics/openai
+              - link "webui" [ref=e1471] [cursor=pointer]:
+                - /url: /topics/webui
+              - link "rag" [ref=e1472] [cursor=pointer]:
+                - /url: /topics/rag
+              - link "llm" [ref=e1473] [cursor=pointer]:
+                - /url: /topics/llm
+              - link "llms" [ref=e1474] [cursor=pointer]:
+                - /url: /topics/llms
+              - link "ollama" [ref=e1475] [cursor=pointer]:
+                - /url: /topics/ollama
+              - link "llm-ui" [ref=e1476] [cursor=pointer]:
+                - /url: /topics/llm-ui
+              - link "ollama-webui" [ref=e1477] [cursor=pointer]:
+                - /url: /topics/ollama-webui
+              - link "llm-webui" [ref=e1478] [cursor=pointer]:
+                - /url: /topics/llm-webui
+              - link "open-webui" [ref=e1479] [cursor=pointer]:
+                - /url: /topics/open-webui
+            - heading "Resources" [level=3] [ref=e1480]
+            - link "Readme" [ref=e1482] [cursor=pointer]:
+              - /url: "#readme-ov-file"
+              - img [ref=e1483]
+              - text: Readme
+            - heading "License" [level=3] [ref=e1485]
+            - link "View license" [ref=e1487] [cursor=pointer]:
+              - /url: "#License-1-ov-file"
+              - img [ref=e1488]
+              - text: View license
+            - heading "Code of conduct" [level=3] [ref=e1490]
+            - link "Code of conduct" [ref=e1492] [cursor=pointer]:
+              - /url: "#coc-ov-file"
+              - img [ref=e1493]
+              - text: Code of conduct
+            - heading "Contributing" [level=3] [ref=e1495]
+            - link "Contributing" [ref=e1497] [cursor=pointer]:
+              - /url: "#contributing-ov-file"
+              - img [ref=e1498]
+              - text: Contributing
+            - heading "Security policy" [level=3] [ref=e1500]
+            - link "Security policy" [ref=e1502] [cursor=pointer]:
+              - /url: "#security-ov-file"
+              - img [ref=e1503]
+              - text: Security policy
+            - link "Activity" [ref=e1506] [cursor=pointer]:
+              - /url: /open-webui/open-webui/activity
+              - img [ref=e1507]
+              - text: Activity
+            - link "Custom properties" [ref=e1510] [cursor=pointer]:
+              - /url: /open-webui/open-webui/custom-properties
+              - img [ref=e1511]
+              - text: Custom properties
+            - heading "Stars" [level=3] [ref=e1513]
+            - link "131k stars" [ref=e1515] [cursor=pointer]:
+              - /url: /open-webui/open-webui/stargazers
+              - img [ref=e1516]
+              - strong [ref=e1518]: 131k
+              - text: stars
+            - heading "Watchers" [level=3] [ref=e1519]
+            - link "567 watching" [ref=e1521] [cursor=pointer]:
+              - /url: /open-webui/open-webui/watchers
+              - img [ref=e1522]
+              - strong [ref=e1524]: "567"
+              - text: watching
+            - heading "Forks" [level=3] [ref=e1525]
+            - link "18.6k forks" [ref=e1527] [cursor=pointer]:
+              - /url: /open-webui/open-webui/forks
+              - img [ref=e1528]
+              - strong [ref=e1530]: 18.6k
+              - text: forks
+            - link "Report repository" [ref=e1532] [cursor=pointer]:
+              - /url: /contact/report-content?content_url=https%3A%2F%2Fgithub.com%2Fopen-webui%2Fopen-webui&report=open-webui+%28user%29
+          - generic [ref=e1534]:
+            - heading "Releases 156" [level=2] [ref=e1535]:
+              - link "Releases 156" [ref=e1536] [cursor=pointer]:
+                - /url: /open-webui/open-webui/releases
+                - text: Releases
+                - generic "156" [ref=e1537]
+            - link "v0.8.12 Latest Mar 27, 20262 weeks ago" [ref=e1538] [cursor=pointer]:
+              - /url: /open-webui/open-webui/releases/tag/v0.8.12
+              - img [ref=e1539]
+              - generic [ref=e1541]:
+                - generic [ref=e1542]:
+                  - generic [ref=e1543]: v0.8.12
+                  - 'generic "Label: Latest" [ref=e1544]': Latest
+                - generic [ref=e1545]: Mar 27, 20262 weeks ago
+            - link "+ 155 releases" [ref=e1547] [cursor=pointer]:
+              - /url: /open-webui/open-webui/releases
+          - generic [ref=e1549]:
+            - heading "Sponsor this project" [level=2] [ref=e1550]
+            - generic "Loading sponsorable links" [ref=e1551]:
+              - button "Sponsor" [disabled] [ref=e1555]:
+                - img [ref=e1556]
+                - text: Sponsor
+            - link "Learn more about GitHub Sponsors" [ref=e1559] [cursor=pointer]:
+              - /url: /sponsors
+          - generic "Loading latest packages" [ref=e1562]:
+            - heading "Packages" [level=2] [ref=e1563]:
+              - link "Packages" [ref=e1564] [cursor=pointer]:
+                - /url: /orgs/open-webui/packages?repo_name=open-webui
+          - generic "Loading contributors" [ref=e1576]:
+            - generic:
+              - heading "Contributors" [level=2] [ref=e1577]:
+                - link "Contributors" [ref=e1578] [cursor=pointer]:
+                  - /url: /open-webui/open-webui/graphs/contributors
+              - list [ref=e1579]:
+                - listitem [ref=e1580]
+                - listitem [ref=e1582]
+                - listitem [ref=e1584]
+          - generic [ref=e1587]:
+            - heading "Languages" [level=2] [ref=e1588]
+            - list [ref=e1598]:
+              - listitem [ref=e1599]:
+                - link "Python 33.4%" [ref=e1600] [cursor=pointer]:
+                  - /url: /open-webui/open-webui/search?l=python
+                  - img [ref=e1601]
+                  - generic [ref=e1603]: Python
+                  - generic [ref=e1604]: 33.4%
+              - listitem [ref=e1605]:
+                - link "Svelte 32.9%" [ref=e1606] [cursor=pointer]:
+                  - /url: /open-webui/open-webui/search?l=svelte
+                  - img [ref=e1607]
+                  - generic [ref=e1609]: Svelte
+                  - generic [ref=e1610]: 32.9%
+              - listitem [ref=e1611]:
+                - link "JavaScript 25.7%" [ref=e1612] [cursor=pointer]:
+                  - /url: /open-webui/open-webui/search?l=javascript
+                  - img [ref=e1613]
+                  - generic [ref=e1615]: JavaScript
+                  - generic [ref=e1616]: 25.7%
+              - listitem [ref=e1617]:
+                - link "TypeScript 5.2%" [ref=e1618] [cursor=pointer]:
+                  - /url: /open-webui/open-webui/search?l=typescript
+                  - img [ref=e1619]
+                  - generic [ref=e1621]: TypeScript
+                  - generic [ref=e1622]: 5.2%
+              - listitem [ref=e1623]:
+                - link "CSS 2.4%" [ref=e1624] [cursor=pointer]:
+                  - /url: /open-webui/open-webui/search?l=css
+                  - img [ref=e1625]
+                  - generic [ref=e1627]: CSS
+                  - generic [ref=e1628]: 2.4%
+              - listitem [ref=e1629]:
+                - link "Shell 0.2%" [ref=e1630] [cursor=pointer]:
+                  - /url: /open-webui/open-webui/search?l=shell
+                  - img [ref=e1631]
+                  - generic [ref=e1633]: Shell
+                  - generic [ref=e1634]: 0.2%
+              - listitem [ref=e1635]:
+                - generic [ref=e1636]:
+                  - img [ref=e1637]
+                  - generic [ref=e1639]: Other
+                  - generic [ref=e1640]: 0.2%
+  - contentinfo [ref=e1642]:
+    - heading "Footer" [level=2] [ref=e1643]
+    - generic [ref=e1644]:
+      - generic [ref=e1645]:
+        - link "GitHub Homepage" [ref=e1646] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e1647]
+        - generic [ref=e1649]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e1650]:
+        - heading "Footer navigation" [level=3] [ref=e1651]
+        - list "Footer navigation" [ref=e1652]:
+          - listitem [ref=e1653]:
+            - link "Terms" [ref=e1654] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e1655]:
+            - link "Privacy" [ref=e1656] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e1657]:
+            - link "Security" [ref=e1658] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e1659]:
+            - link "Status" [ref=e1660] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e1661]:
+            - link "Community" [ref=e1662] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e1663]:
+            - link "Docs" [ref=e1664] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e1665]:
+            - link "Contact" [ref=e1666] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e1667]:
+            - button "Manage cookies" [ref=e1669] [cursor=pointer]
+          - listitem [ref=e1670]:
+            - button "Do not share my personal information" [ref=e1672] [cursor=pointer]

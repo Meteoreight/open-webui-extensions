@@ -58,6 +58,25 @@ uv run <command>
 uvx ruff check
 ```
 
+### Playwright UI Tests
+
+Playwright-based UI smoke tests live under `tests/playwright/` and target an already running Open WebUI instance.
+
+Detailed notes for future agents and maintainers are in [tests/playwright/README.md](tests/playwright/README.md).
+
+1. Copy `.env.playwright.example` to `.env.playwright` and fill in:
+   - `PLAYWRIGHT_BASE_URL`
+   - `PLAYWRIGHT_MODEL_IDS`
+   - `PLAYWRIGHT_RAG_MODEL_ID`
+   - `PLAYWRIGHT_SSO_EMAIL`
+   - `PLAYWRIGHT_SSO_PASSWORD`
+2. If you want to validate file-backed RAG, place a real file in `tests/playwright/fixtures/rag/` or set `PLAYWRIGHT_RAG_FILE`.
+3. Install test dependencies with `npm install`.
+4. Install the browser binary with `npx playwright install chromium`.
+5. Run `npm run test:e2e:playwright`.
+
+The auth setup uses the Microsoft SSO button from the UI and stores Playwright auth state in `tests/playwright/.auth/`.
+
 ### Creating New Tools
 
 1. Copy the template file [`tools/_template.py`](tools/_template.py)

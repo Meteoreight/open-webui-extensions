@@ -1,0 +1,12 @@
+{
+	"name": "open-webui-extensions",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"test:e2e:playwright": "playwright test",
+		"test:e2e:playwright:ui": "playwright test --ui"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.58.0"
+	}
+}
