@@ -44,12 +44,84 @@ for page in doc:
 print(f"Total pages: {doc.page_count}")
 ```
 
-### Excel Files (python-calamine - Built-in)
+### Excel Files (XLSX - zipfile + lxml workaround)
+**Note**: python-calamine is not available, so extract as ZIP and parse XML.
 ```python
+import zipfile
+from lxml import etree
 import pandas as pd
 
-# Read Excel with calamine engine
-df = pd.read_excel('/mnt/uploads/data.xlsx', engine='calamine')
+def extract_xlsx_to_dataframe(filepath, sheet_name=None):
+    """Extract XLSX file to pandas DataFrame using zipfile + lxml"""
+    with zipfile.ZipFile(filepath, 'r') as z:
+        # Get shared strings (for cell values that reference shared strings)
+        shared_strings = []
+        if 'xl/sharedStrings.xml' in z.namelist():
+            xml_content = z.read('xl/sharedStrings.xml')
+            tree = etree.fromstring(xml_content)
+            ns = {'main': 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+            for si in tree.xpath('//main:si', namespaces=ns):
+                t = si.xpath('./main:t', namespaces=ns)
+                shared_strings.append(t[0].text if t and t[0].text else '')
+
+        # Get worksheet files
+        sheet_files = [f for f in z.namelist() if f.startswith('xl/worksheets/sheet') and f.endswith('.xml')]
+        sheet_files = sorted(sheet_files, key=lambda x: int(x.split('sheet')[1].split('.')[0]))
+
+        # Parse sheet
+        target_sheet = sheet_files[0]  # Default to first sheet
+        if sheet_name:
+            # You could implement workbook.xml parsing to find sheet by name
+            pass
+
+        xml_content = z.read(target_sheet)
+        tree = etree.fromstring(xml_content)
+        ns = {'main': 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+
+        # Extract rows
+        rows = []
+        for row in tree.xpath('//main:row', namespaces=ns):
+            row_data = {}
+            for cell in row.xpath('./main:c', namespaces=ns):
+                cell_ref = cell.get('r', '')
+                cell_type = cell.get('t', '')
+
+                # Extract column letter and row number
+                col_match = ''.join(c for c in cell_ref if c.isalpha())
+                row_match = ''.join(c for c in cell_ref if c.isdigit())
+
+                v = cell.xpath('./main:v', namespaces=ns)
+                if v and v[0].text:
+                    value = v[0].text
+                    # If cell type is 's', it's a shared string
+                    if cell_type == 's' and shared_strings:
+                        idx = int(value)
+                        value = shared_strings[idx] if idx < len(shared_strings) else value
+                    row_data[col_match] = value
+
+            if row_data:
+                rows.append((int(row_match) if row_match else len(rows), row_data))
+
+        # Sort by row number and create DataFrame
+        if rows:
+            rows.sort(key=lambda x: x[0])
+            data = [r[1] for r in rows]
+
+            # Get columns from first row (header)
+            if data:
+                columns = sorted(data[0].keys(), key=lambda x: (len(x), x))
+                df_data = []
+                for i, row in enumerate(data):
+                    if i == 0:
+                        # First row as header
+                        continue
+                    df_data.append([row.get(col, '') for col in columns])
+                return pd.DataFrame(df_data, columns=columns)
+
+        return pd.DataFrame()
+
+# Example usage
+df = extract_xlsx_to_dataframe('/mnt/uploads/data.xlsx')
 print(df.head())
 ```
 
