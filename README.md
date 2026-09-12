@@ -31,15 +31,13 @@ Prepares uploaded files for Code Interpreter by ensuring they are accessible in 
 
 ### Skills Manager
 
-Standalone tool for managing native Workspace Skills (list/show/create/update/delete) for any model.
+Standalone tool for managing native Workspace Skills (list/show/create/update) for any model.
 
 **Features:**
 - List all user skills with metadata
 - Show skill details including content
 - Create new skills or overwrite existing ones
 - Update skill properties (name, description, content, activation)
-- Delete skills
-- Multi-language support (EN, ZH, JA, KO, FR, DE, ES, IT, VI, ID)
 
 ## Development
 
