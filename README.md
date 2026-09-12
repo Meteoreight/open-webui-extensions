@@ -15,19 +15,21 @@ This repository contains custom extensions to enhance Open WebUI functionality:
 
 ## Tools
 
-### Code Interpreter File Preparer
+### File Translator
 
-Prepares uploaded files for Code Interpreter by ensuring they are accessible in `/mnt/uploads/`.
+Translates chat-attached docx / xlsx / pptx / pdf files into a target language and attaches the translated copies to the message. Documents are parsed into segments, translated in parallel chunks by a configurable worker model, and written back into the original structure. See [tools/docs/file-translator.md](tools/docs/file-translator.md) for details.
 
 **Features:**
-- Lists all attached files with their paths
-- Provides usage examples for Python code execution
-- Status updates during file processing
+- Preserves structure: tables, nested tables, text boxes, SmartArt (best effort), docx headers/footers/footnotes, pptx grouped shapes and notes, xlsx cell coordinates, PDF layout (approximate)
+- Parallel chunk translation with progress status messages in the UI
+- Glossary support (inline argument, attached csv/tsv/xlsx/txt/md glossary file, UserValves, admin Valves) with per-term precedence
+- Translation worker model configured by model id in Valves (internal API, no API key needed)
 
 **Usage:**
-1. Upload files to your chat
-2. Call `prepare_files_for_code_interpreter` tool
-3. Use the returned paths in `execute_code` tool
+1. Configure the `translation_model` valve with a model id
+2. Attach a docx/xlsx/pptx/pdf file and ask "translate this into Japanese"
+3. The model calls `translate_file`; the translated file is attached to the message
+4. Optionally attach a glossary file and pass its name as `glossary_file`
 
 ### Skills Manager
 
@@ -124,6 +126,10 @@ Markdown-based instruction sets for guiding AI behavior. Added in Open WebUI v0.
 - `$` mention in chat for direct injection
 - Model-attached skills for lazy-loading
 
+**Available skills:**
+- `code_interpreter_usage` — recipes for parsing docx/xlsx/pptx/pdf in code interpreter
+- `file-translation` — when and how to call the File Translator tool
+
 **File Format:**
 ```markdown
 ---
@@ -141,10 +147,11 @@ Instructions in Markdown...
 ```
 open-webui-extensions/
 ├── skills/             # Markdown instruction sets (v0.8.0+)
-│   └── _template.md
+│   ├── _template.md
+│   └── file-translation.md
 ├── tools/              # LLM-callable tools
 │   ├── _template.py
-│   ├── code_interpreter_file_preparer.py
+│   ├── file-translator.py
 │   └── skills_manager.py
 └── functions/          # Function plugins
     ├── pipe/           # Custom model providers
