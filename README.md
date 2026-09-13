@@ -41,6 +41,29 @@ Standalone tool for managing native Workspace Skills (list/show/create/update) f
 - Create new skills or overwrite existing ones
 - Update skill properties (name, description, content, activation)
 
+### Excel Inspector
+
+Inspects chat-attached xlsx/xlsm workbooks and returns a structure map (sheets, used ranges, header rows, column profiles, sample rows, formulas with cached values, merged ranges, data quality notes) with `Sheet!Range` references. Emits citation events so inspected ranges appear in the citation panel. See [tools/docs/excel-inspector.md](tools/docs/excel-inspector.md) for details.
+
+**Features:**
+- `file_handler: true` — workbooks bypass RAG and are analyzed as structured data
+- Streaming read-only scan with row/column/sheet caps, file size and zip bomb guards, per-workbook timeout
+- Header row detection, column profiles (types, empty/distinct/repeated counts, numeric ranges), duplicate detection
+- Formulas reported with Excel's cached values (never recalculated); `.xls` rejected with re-save guidance
+- Per-sheet citations in the standard citation panel
+
+**Usage:**
+1. Import the tool (no valves configuration required)
+2. Attach an xlsx/xlsm file and ask "analyze this workbook" or "list the sheets"
+3. The model calls `inspect_workbook` and answers from the structure map with evidence ranges
+4. Optional: add the `excel-analysis` skill and the Excel Evidence Guard filter (below)
+
+## Functions
+
+### Excel Evidence Guard (filter)
+
+`functions/filter/excel-evidence-guard.py` — outlet filter that appends a warning under answers which discuss an attached Excel workbook (detected via `inspect_workbook` calls or Excel citations in the conversation) but cite no cell references like `Data!B2:F20`. Detection only; it never rewrites the answer.
+
 ## Development
 
 ### Environment Setup
@@ -128,6 +151,7 @@ Markdown-based instruction sets for guiding AI behavior. Added in Open WebUI v0.
 
 **Available skills:**
 - `code_interpreter_usage` — recipes for parsing docx/xlsx/pptx/pdf in code interpreter
+- `excel-analysis` — inspect Excel attachments with `inspect_workbook` before answering, with cell-range evidence
 - `file-translation` — when and how to call the File Translator tool
 
 **File Format:**
@@ -148,14 +172,17 @@ Instructions in Markdown...
 open-webui-extensions/
 ├── skills/             # Markdown instruction sets (v0.8.0+)
 │   ├── _template.md
+│   ├── excel-analysis.md
 │   └── file-translation.md
 ├── tools/              # LLM-callable tools
 │   ├── _template.py
+│   ├── excel_inspector.py
 │   ├── file-translator.py
 │   └── skills_manager.py
 └── functions/          # Function plugins
     ├── pipe/           # Custom model providers
     ├── filter/         # Input/output modifiers
+    │   └── excel-evidence-guard.py
     └── action/         # Chat message buttons
 ```
 
