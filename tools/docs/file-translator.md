@@ -2,7 +2,7 @@
 
 ## Overview
 
-`tools/file-translator.py` translates files attached to a chat message (`.docx`, `.xlsx`, `.pptx`, `.pdf`) into a target language and attaches the translated copies to the assistant message. Documents are parsed into text segments, grouped into size-limited chunks, translated in parallel by a worker model, and written back into the original document structure — so tables, text boxes, shapes, notes and (for PDF) page layout survive the translation.
+`tools/file-translator.py` translates files attached to a chat message (`.docx`, `.xlsx`, `.pptx`, `.pdf`) into a target language and attaches the translated copies to the assistant message. Documents are parsed into text segments, grouped into size-limited chunks, translated in parallel by a worker model, and written back into the original document structure. Formatting within a paragraph and PDF layout may change.
 
 Internals:
 
@@ -11,9 +11,9 @@ Internals:
    - **docx** — `word/document.xml`, headers/footers, footnotes/endnotes, text boxes/shapes, SmartArt drawings, chart parts (best effort)
    - **pptx** — slides, grouped shapes, tables, notes slides, chart/diagram parts (best effort); slide-number fields are skipped
    - **xlsx** — `xl/sharedStrings.xml` (all text cells; formulas/numbers untouched; charts not translated)
-   - **pdf** — text blocks with bounding box, font size and color (pymupdf); original text is redacted and the translation is re-inserted in place with automatic font-size shrinking and CJK font embedding
+   - **pdf** — text blocks with bounding box, font size and color (pymupdf); text that fits is redacted and re-inserted with a common body-text size, compact line spacing and CJK fonts. Blocks that would require unreadably small text are left in the source language and reported.
 3. Segments are greedily packed into chunks (default 4000 chars); oversized segments are split at sentence boundaries and re-joined after translation.
-4. Chunks are translated via the internal Open WebUI API (`generate_chat_completion`) — no API key needed, the calling user's model permissions apply. Two or more chunks run in parallel (`asyncio.gather` + semaphore). Each chunk is a numbered JSON object so segment boundaries survive the round trip.
+4. Chunks are translated via Open WebUI's shared chat completion API (`open_webui.utils.chat.generate_chat_completion`) — no API key needed, the calling user's model permissions apply, and OpenAI-compatible, Ollama and Pipe models can be selected. Requests run sequentially by default to avoid overloading smaller models; the concurrency Valve can increase this. Each chunk is a numbered JSON object; missing or invalid values are retried up to two times using only the missing keys, then left in the source language and reported.
 5. The translated document is uploaded (`upload_file_handler`), persisted on the message (`Chats.add_message_files_by_id_and_message_id`) and attached in the UI via a `chat:message:files` event.
 
 Progress is reported as status events ("Parsing report.docx", "report.docx: translating chunks 3/12", ...) throttled to about ten updates per file.
@@ -38,9 +38,10 @@ Progress is reported as status events ("Parsing report.docx", "report.docx: tran
 |---|---|---|
 | `translation_model` | `""` | **Required.** Model id of the translation worker. |
 | `chunk_char_limit` | `4000` | Maximum characters packed into one translation chunk. |
-| `max_parallel_translations` | `4` | Maximum concurrent translation requests. |
+| `max_parallel_translations` | `1` | Maximum concurrent translation requests. |
 | `request_timeout` | `300` | Timeout (seconds) per translation request. |
-| `temperature` | `0.1` | Sampling temperature for the translation model. |
+| `temperature` | `1.0` | Sampling temperature for the translation model. |
+| `reasoning_effort` | `low` | Reasoning effort for the translation model: `minimal`, `low`, `medium` or `high`. Leave empty to omit the parameter (e.g. for models without reasoning support). |
 | `glossary` | `""` | Admin default glossary, one `source=target` pair per line. |
 | `show_status` | `True` | Emit progress status events to the UI. |
 
@@ -100,8 +101,8 @@ Failures are reported per file (`FAILED (...)`) instead of raising, and error st
 
 ## Limitations
 
-- PDF output preserves the layout approximately; dense or multi-column pages may reflow.
+- PDF output fits translations into the original text blocks. Body text is capped at 9 pt with 1.1 line spacing, and blocks that cannot fit at 6.5 pt remain in the source language and are reported. Smaller source text, such as footnotes, retains its own size range.
 - Chart text (docx/pptx) is translated best-effort via cached label values.
 - xlsx charts and formulas are not translated; only shared text cells are.
 - Rich formatting *inside* a paragraph (mixed bold/italic runs) collapses onto the first run's formatting; paragraph-level styles are preserved.
-- Chunks whose model reply is not valid JSON after one retry are left in the source language and counted in the summary.
+- Missing or invalid translated values after two retries are left in the source language and counted in the summary.
