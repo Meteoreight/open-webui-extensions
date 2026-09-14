@@ -6,22 +6,24 @@ git_url: https://github.com/Meteoreight/open-webui-extensions
 description: Translate docx, xlsx, pptx and pdf files attached to chat into a target language while preserving document structure (tables, text boxes, charts, notes)
 required_open_webui_version: 0.8.9
 requirements: lxml, pymupdf
-version: 0.1.0
+version: 0.1.4
 licence: MIT
 """
 
 import asyncio
 import csv
 import fnmatch
+import inspect
 import io
 import json
-import inspect
 import logging
 import os
 import re
 import zipfile
 from collections import Counter
-from typing import Any, Callable, Optional
+from collections.abc import Callable
+from pathlib import Path
+from typing import Any
 from urllib.parse import quote
 
 from pydantic import BaseModel, Field
@@ -58,13 +60,22 @@ _SENTENCE_BOUNDARY_RE = re.compile(r"[.!?。！？…；;]+[\"'”’»）)\]]*\
 
 _CJK_LANGS = {
     "ja": "japan",
+    "japanese": "japan",
     "zh": "china-s",
+    "chinese": "china-s",
+    "simplified chinese": "china-s",
+    "traditional chinese": "china-t",
     "zh-cn": "china-s",
     "zh-tw": "china-t",
     "zh-hans": "china-s",
     "zh-hant": "china-t",
     "ko": "korea",
+    "korean": "korea",
 }
+
+_PDF_LINE_HEIGHT = 1.1
+_PDF_BODY_FONT_SIZE = 9.0
+_PDF_MIN_BODY_FONT_SIZE = 6.5
 
 _GLOSSARY_HEADER_WORDS = {
     "source",
@@ -149,9 +160,11 @@ class _ParsedDocument:
         self,
         segments: list[tuple[str, Callable[[str], None]]],
         rebuild: Callable[[], bytes],
+        warnings: list[str] | None = None,
     ):
         self.segments = segments
         self.rebuild = rebuild
+        self.warnings = warnings if warnings is not None else []
 
 
 # ---------------------------------------------------------------------------
@@ -166,18 +179,24 @@ def _ooxml_paragraph_segments(
     that belongs to nested structures (text boxes, groups, table cells) out of
     the enclosing paragraph."""
     segments = []
+    boundary_tags = {NS_W + "br", NS_W + "cr", NS_W + "tab", NS_A + "br", NS_A + "tab"}
     for paragraph in root.iter(p_tag):
         nodes = []
-        for text_node in paragraph.iter(t_tag):
-            if _nearest_ancestor(text_node, p_tag) is not paragraph:
+        for node in paragraph.iter():
+            if _nearest_ancestor(node, p_tag) is not paragraph:
                 continue
-            if exclude_field_tags and _inside_ancestor(text_node, *exclude_field_tags):
+            if exclude_field_tags and _inside_ancestor(node, *exclude_field_tags):
                 continue
-            nodes.append(text_node)
-        text = "".join(node.text or "" for node in nodes)
-        if _skippable(text):
-            continue
-        segments.append((text, _make_first_node_writer(nodes)))
+            if node.tag in boundary_tags:
+                text = "".join(item.text or "" for item in nodes)
+                if not _skippable(text):
+                    segments.append((text, _make_first_node_writer(nodes)))
+                nodes = []
+            elif node.tag == t_tag:
+                nodes.append(node)
+        text = "".join(item.text or "" for item in nodes)
+        if not _skippable(text):
+            segments.append((text, _make_first_node_writer(nodes)))
     return segments
 
 
@@ -358,7 +377,7 @@ def parse_xlsx(data: bytes) -> _ParsedDocument:
 
 def _import_pymupdf():
     try:
-        import pymupdf  # noqa: F401
+        import pymupdf
 
         return pymupdf
     except ImportError:
@@ -382,10 +401,10 @@ def _pdf_font_for(text: str, target_language: str) -> str:
     for prefix, font in _CJK_LANGS.items():
         if lang == prefix or lang.startswith(prefix + "-"):
             return font
-    # Fall back to the wide-coverage built-in font when the translation
-    # contains glyphs beyond Latin-1 (Cyrillic, Greek, ...).
+    # Use an available wide-coverage built-in font for non-Latin text.
+    # "cjk" is not a valid PyMuPDF font name for insert_textbox().
     if any(ord(ch) > 0x24F for ch in text):
-        return "cjk"
+        return "japan"
     return "helv"
 
 
@@ -396,6 +415,7 @@ def parse_pdf(data: bytes, target_language: str) -> _ParsedDocument:
 
     doc = pymupdf.open(stream=data, filetype="pdf")
     page_blocks: list[tuple[object, list[dict]]] = []
+    warnings: list[str] = []
 
     segments: list[tuple[str, Callable[[str], None]]] = []
     for page in doc:
@@ -443,10 +463,26 @@ def parse_pdf(data: bytes, target_language: str) -> _ParsedDocument:
         page_blocks.append((page, blocks))
 
     def rebuild() -> bytes:
-        for page, blocks in page_blocks:
+        for page_number, (page, blocks) in enumerate(page_blocks, start=1):
             if not blocks:
                 continue
+            replacements = []
             for record in blocks:
+                if record["translated"] == record["text"]:
+                    continue
+                fontname = _pdf_font_for(record["translated"], target_language)
+                style = _fit_pdf_text(
+                    page, record["rect"], record["translated"], record["size"], fontname
+                )
+                if style is None:
+                    warnings.append(
+                        f"page {page_number}: a translated text block did not fit and was kept in the source language"
+                    )
+                    continue
+                replacements.append((record, style))
+            if not replacements:
+                continue
+            for record, _ in replacements:
                 page.add_redact_annot(record["rect"])
             try:
                 page.apply_redactions(
@@ -454,55 +490,60 @@ def parse_pdf(data: bytes, target_language: str) -> _ParsedDocument:
                 )
             except TypeError:
                 page.apply_redactions()
-            for record in blocks:
+            for record, (font_size, fontname) in replacements:
                 color_int = record["color"]
                 color = (
                     ((color_int >> 16) & 255) / 255.0,
                     ((color_int >> 8) & 255) / 255.0,
                     (color_int & 255) / 255.0,
                 )
-                _insert_pdf_text(
-                    page,
+                leftover = page.insert_textbox(
                     record["rect"],
                     record["translated"],
-                    record["size"],
-                    color,
-                    _pdf_font_for(record["translated"], target_language),
-                    pymupdf,
+                    fontsize=font_size,
+                    fontname=fontname,
+                    color=color,
+                    align=0,
+                    lineheight=_PDF_LINE_HEIGHT,
                 )
+                if leftover < 0:
+                    raise RuntimeError(
+                        f"PDF text insertion failed on page {page_number}"
+                    )
         return doc.tobytes()
 
-    return _ParsedDocument(segments, rebuild)
+    return _ParsedDocument(segments, rebuild, warnings)
 
 
-def _insert_pdf_text(
-    page, rect, text: str, size: float, color, fontname: str, pymupdf
-) -> None:
-    """Insert text into rect, shrinking the font size until it fits. Falls
-    back to the wide-coverage CJK font when the primary font rejects glyphs."""
-    font_size = float(size)
-    while font_size >= 3.0:
-        try:
-            leftover = page.insert_textbox(
-                rect, text, fontsize=font_size, fontname=fontname, color=color, align=0
-            )
-        except Exception:
-            break
-        if leftover >= 0:
-            return
-        font_size -= 0.5
-    # Retry once with the fallback font before giving up on this block.
-    try:
-        page.insert_textbox(
-            rect,
-            text,
-            fontsize=min(float(size), 8.0),
-            fontname="cjk",
-            color=color,
-            align=0,
+def _fit_pdf_text(page, rect, text: str, size: float, fontname: str):
+    """Fit text at a readable, consistent size without changing the source page."""
+    if 9.0 <= size <= 12.0:
+        preferred_size = min(float(size), _PDF_BODY_FONT_SIZE)
+    elif size > 12.0:
+        preferred_size = float(size) * 0.8
+    else:
+        preferred_size = float(size)
+    minimum_size = _PDF_MIN_BODY_FONT_SIZE if size >= 9.0 else 3.0
+    for candidate in dict.fromkeys((fontname, "japan")):
+        font_size = (
+            preferred_size if candidate == fontname else min(preferred_size, 8.0)
         )
-    except Exception:
-        log.debug("PDF textbox insert failed", exc_info=True)
+        while font_size >= minimum_size:
+            try:
+                leftover = page.new_shape().insert_textbox(
+                    rect,
+                    text,
+                    fontsize=font_size,
+                    fontname=candidate,
+                    align=0,
+                    lineheight=_PDF_LINE_HEIGHT,
+                )
+            except Exception:  # noqa: BLE001 - fonts may fail with backend-specific errors
+                break
+            if leftover >= 0:
+                return font_size, candidate
+            font_size -= 0.5
+    return None
 
 
 # ---------------------------------------------------------------------------
@@ -556,7 +597,7 @@ def build_chunks(texts: list[str], limit: int) -> list[list[int]]:
 # ---------------------------------------------------------------------------
 
 
-def _glossary_headerish(first: Optional[str], second: Optional[str]) -> bool:
+def _glossary_headerish(first: str | None, second: str | None) -> bool:
     for cell in (first, second):
         if cell and cell.strip().lower() in _GLOSSARY_HEADER_WORDS:
             return True
@@ -586,7 +627,7 @@ def _parse_delimited_glossary(text: str, delimiter: str) -> dict:
 
 
 def _parse_line_glossary(text: str) -> dict:
-    rows = []
+    terms: dict[str, str] = {}
     for line in text.splitlines():
         line = line.strip()
         if not line or line.startswith("#"):
@@ -597,8 +638,10 @@ def _parse_line_glossary(text: str) -> dict:
             source, target = line.split("\t", 1)
         else:
             continue
-        rows.append((source.strip(), target.strip()))
-    return _parse_glossary_rows(rows)
+        source, target = source.strip(), target.strip()
+        if source and target:
+            terms[source] = target
+    return terms
 
 
 def _parse_xlsx_glossary(data: bytes) -> dict:
@@ -713,16 +756,24 @@ class Tools:
             default="", description="Model id used as the translation worker"
         )
         chunk_char_limit: int = Field(
-            default=4000, description="Maximum characters per translation chunk"
+            default=4000, ge=1, description="Maximum characters per translation chunk"
         )
         max_parallel_translations: int = Field(
-            default=4, description="Maximum concurrent translation requests"
+            default=1, ge=1, description="Maximum concurrent translation requests"
         )
         request_timeout: int = Field(
-            default=300, description="Timeout in seconds per translation request"
+            default=300, ge=1, description="Timeout in seconds per translation request"
         )
         temperature: float = Field(
-            default=0.1, description="Sampling temperature for the translation model"
+            default=1.0, description="Sampling temperature for the translation model"
+        )
+        reasoning_effort: str = Field(
+            default="low",
+            pattern=r"(?i)^\s*(minimal|low|medium|high)?\s*$",
+            description=(
+                "Reasoning effort for the translation model "
+                "(minimal, low, medium or high). Leave empty to omit the parameter."
+            ),
         )
         glossary: str = Field(
             default="",
@@ -763,13 +814,13 @@ class Tools:
         glossary: str = "",
         glossary_file: str = "",
         source_language: str = "",
-        __user__: dict = None,
-        __request__=None,
-        __files__: list = None,
-        __event_emitter__: Callable = None,
+        __user__: dict | None = None,
+        __request__: Any = None,
+        __files__: list | None = None,
+        __event_emitter__: Callable | None = None,
         __chat_id__: str = "",
         __message_id__: str = "",
-        __metadata__: dict = None,
+        __metadata__: dict | None = None,
     ) -> str:
         """
         Translate attached docx/xlsx/pptx/pdf files into a target language and
@@ -871,6 +922,8 @@ class Tools:
 
         results: list[str] = []
         total_untranslated = 0
+        total_pdf_unfitted = 0
+        attached_count = 0
         for entry in targets:
             name = entry.get("name", "file")
             await self._emit(__event_emitter__, f"Parsing {name}")
@@ -956,9 +1009,13 @@ class Tools:
                 results.append(f"- {name}: translated but FAILED to attach ({exc})")
                 continue
 
+            attached_count += 1
             note = f"- {name}: {len(texts)} segments in {len(chunks)} chunks -> {out_name} (attached)"
             if untranslated:
                 note += f", {untranslated} pieces left untranslated"
+            if parsed.warnings:
+                total_pdf_unfitted += len(parsed.warnings)
+                note += f", {len(parsed.warnings)} PDF text blocks kept in the source language because the translation did not fit"
             results.append(note)
 
         summary_lines = [
@@ -980,9 +1037,14 @@ class Tools:
             summary_lines.append(
                 f"{total_untranslated} text piece(s) could not be translated and were kept in the source language."
             )
-        summary_lines.append(
-            "The translated file(s) have been attached to this message."
-        )
+        if total_pdf_unfitted:
+            summary_lines.append(
+                f"{total_pdf_unfitted} PDF text block(s) could not fit at a readable size and were kept in the source language."
+            )
+        if attached_count:
+            summary_lines.append(
+                "The translated file(s) have been attached to this message."
+            )
         await self._emit(
             __event_emitter__, "Translation complete", done=True, status="complete"
         )
@@ -1024,7 +1086,7 @@ class Tools:
                 unmatched.append(token)
         return matched, unmatched
 
-    async def _read_file_bytes(self, file_id: str) -> Optional[bytes]:
+    async def _read_file_bytes(self, file_id: str) -> bytes | None:
         try:
             from open_webui.models.files import Files
             from open_webui.storage.provider import Storage
@@ -1035,8 +1097,7 @@ class Tools:
             if model is None:
                 return None
             path = Storage.get_file(model.path)
-            with open(path, "rb") as handle:
-                return handle.read()
+            return await asyncio.to_thread(Path(path).read_bytes)
         except Exception:
             log.exception("Failed to read file %s from storage", file_id)
             return None
@@ -1077,7 +1138,7 @@ class Tools:
             {"role": "user", "content": payload},
         ]
 
-    def _parse_model_json(self, content: Optional[str]) -> Optional[dict]:
+    def _parse_model_json(self, content: str | None) -> dict | None:
         if not content:
             return None
         text = content.strip()
@@ -1092,16 +1153,21 @@ class Tools:
         return parsed if isinstance(parsed, dict) else None
 
     async def _call_model(self, request, user, model: str, messages: list[dict]) -> str:
-        from open_webui.routers.openai import generate_chat_completion
+        from open_webui.utils.chat import generate_chat_completion
+
+        form_data: dict = {
+            "model": model,
+            "messages": messages,
+            "stream": False,
+            "temperature": self.valves.temperature,
+        }
+        effort = (self.valves.reasoning_effort or "").strip().lower()
+        if effort:
+            form_data["reasoning_effort"] = effort
 
         response = await generate_chat_completion(
             request,
-            form_data={
-                "model": model,
-                "messages": messages,
-                "stream": False,
-                "temperature": self.valves.temperature,
-            },
+            form_data=form_data,
             user=user,
         )
         return await _extract_content(response)
@@ -1129,16 +1195,17 @@ class Tools:
         async def worker(chunk: list[int]) -> None:
             nonlocal done_count, untranslated
             async with semaphore:
-                payload = {str(i): flat[i][2] for i in chunk}
-                messages = self._build_messages(
-                    target_language,
-                    source_language,
-                    glossary_terms,
-                    json.dumps(payload, ensure_ascii=False),
-                    strict=False,
-                )
-                parsed = None
-                for attempt in range(2):
+                remaining = {str(i): flat[i][2] for i in chunk}
+                translated: dict[str, str] = {}
+                for attempt in range(3):
+                    rate_limited = False
+                    messages = self._build_messages(
+                        target_language,
+                        source_language,
+                        glossary_terms,
+                        json.dumps(remaining, ensure_ascii=False),
+                        strict=attempt > 0,
+                    )
                     try:
                         content = await asyncio.wait_for(
                             self._call_model(
@@ -1147,31 +1214,43 @@ class Tools:
                             timeout=self.valves.request_timeout,
                         )
                         parsed = self._parse_model_json(content)
-                    except Exception:
+                    except Exception as exc:
                         log.exception(
                             "Translation call failed (attempt %d)", attempt + 1
                         )
                         parsed = None
-                    if parsed is not None:
-                        break
-                    messages = self._build_messages(
-                        target_language,
-                        source_language,
-                        glossary_terms,
-                        json.dumps(payload, ensure_ascii=False),
-                        strict=True,
-                    )
-                async with lock:
-                    if parsed is None:
-                        untranslated += len(chunk)
-                    else:
-                        for key, value in parsed.items():
+                        status_code = getattr(exc, "status_code", None)
+                        message = str(exc).lower()
+                        rate_limited = status_code == 429 or any(
+                            word in message
+                            for word in ("429", "rate limit", "overload")
+                        )
+                        if rate_limited and attempt < 2:
+                            headers = getattr(exc, "headers", None) or {}
+                            retry_after = headers.get("Retry-After") or headers.get(
+                                "retry-after"
+                            )
                             try:
-                                idx = int(key)
-                            except ValueError:
-                                continue
-                            if idx in chunk and isinstance(value, str):
-                                translated_pieces[(flat[idx][0], flat[idx][1])] = value
+                                delay = float(retry_after)
+                            except (TypeError, ValueError):
+                                delay = 15 * (attempt + 1)
+                            await asyncio.sleep(min(max(delay, 1), 120))
+                    if parsed is not None:
+                        for key in list(remaining):
+                            value = parsed.get(key)
+                            if isinstance(value, str) and value.strip():
+                                translated[key] = value
+                                del remaining[key]
+                    if not remaining:
+                        break
+                    if parsed is None and attempt < 2 and not rate_limited:
+                        await asyncio.sleep(2**attempt)
+                async with lock:
+                    for idx in chunk:
+                        value = translated.get(str(idx))
+                        if value is not None:
+                            translated_pieces[(flat[idx][0], flat[idx][1])] = value
+                    untranslated += len(remaining)
                     done_count += 1
                     if done_count == total or done_count % report_step == 0:
                         await self._emit(
@@ -1197,9 +1276,8 @@ class Tools:
         data: bytes,
     ) -> None:
         from fastapi import UploadFile
-        from starlette.datastructures import Headers
-
         from open_webui.routers.files import upload_file_handler
+        from starlette.datastructures import Headers
 
         upload = UploadFile(
             file=io.BytesIO(data),
@@ -1217,7 +1295,7 @@ class Tools:
         file_id = file_item.id
         try:
             url = str(request.url_for("get_file_content_by_id", id=file_id))
-        except Exception:
+        except Exception:  # noqa: BLE001 - fall back if URL construction fails
             url = f"/api/v1/files/{quote(file_id)}/content"
         files = [
             {
